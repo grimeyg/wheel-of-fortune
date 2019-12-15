@@ -1,6 +1,7 @@
 # Wheel of Fortune
 
 ## DTR
+https://gist.github.com/KevDev90/12da5b24f0ebfa377fb5e62ba5abefce
 
 
 ## Wireframes
