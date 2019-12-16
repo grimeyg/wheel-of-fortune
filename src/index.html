@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Wheel of Fortune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="base.scss" />
+    <script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <h1>Wheel of Fortune</h1>
+<form>
+  <input class='name-input'/>
+  <input class='name-input'/>
+  <input class='name-input'/>
+  <button class='start-game'>Submit</button>
+</form>
+<section class='guess-board'>
+  <p>Clue</p>
+</section>
+<section class='wheel-section'>
+  <button class='spin-button'>Spin</button>
+</section>
+<div>
+  <p class="player-1">Player 1<span>0</span></p>
+  <p class="player-2">Player 2<span>0</span></p>
+  <p class="player-3">Player 3<span>0</span></p>
+</div>
+ <script src="classes/game.js"></script>
+ <script src="classes/puzzle.js"></script>
+ <script src="classes/player.js"></script>
+ <script src="classes/wheel.js"></script>
+ <script src="classes/round.js"></script>
   </body>
 </html>
