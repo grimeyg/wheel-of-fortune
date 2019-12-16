@@ -5,8 +5,25 @@
 //   background-color: $primary-background;
 // }
 
-h1 {
- text-align: center;
+body {
+  background: url(../../img/main-pic.jpg);
+  background-size: cover;
+}
+
+#wheelo-fortune {
+  color: #FFFFFF;
+  display: flex;
+  font-family: "Press Start 2P";
+  font-size: 5rem;
+  justify-content: center;
+}
+
+#title-year {
+  color: #5e2f00;
+  display: flex;
+  font-family: "Girassol";
+  font-size: 6rem;
+  justify-content: center;
 }
 
 h2 {
@@ -41,7 +58,45 @@ div {
 }
 
 form {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+#player-input{
+  display: flex;
+  justify-content: center;
+  margin-left: -3%;
+}
+
+.player-div {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 3%;
+}
+
+.player {
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+}
+
+.name-input {
+  font-size: 1rem;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+}
+
+.start-game {
+  background-color: #DAA520;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Press Start 2P";
+  font-size: 1.5rem;
+  margin-top: 10%;
+  padding: 1%;
+  width: 25%;
 }
