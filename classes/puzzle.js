@@ -1,6 +1,6 @@
 class Puzzle {
-  constructor(obj) {
-    this.category = obj.category;
+  constructor(category) {
+    this.category = category;
     this.answer = '';
     this.numberOfWords = 1;
     this.description = '';
