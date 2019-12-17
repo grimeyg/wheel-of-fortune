@@ -6,4 +6,4 @@ import Wheel from '../classes/wheel.js';
 
 const game = new Game();
 
-console.log(game.loadPuzzles());
+console.log(game);

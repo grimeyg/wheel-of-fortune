@@ -6,7 +6,7 @@ class Game {
     this.turn = 0;
     this.players = [];
     this.rounds = [];
-    this.puzzles = [];
+    this.puzzles = this.loadPuzzles();
   }
 
   startGame(name1, name2, name3) {
