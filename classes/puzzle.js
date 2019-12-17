@@ -1,14 +1,12 @@
 class Puzzle {
-  constructor(category) {
-    this.category = category;
-    this.answer = '';
-    this.numberOfWords = 1;
-    this.description = '';
-
+  constructor(puzzle) {
+    this.category = puzzle.category;
+    this.answer = puzzle.correct_answer;
+    this.numberOfWords = puzzle.number_of_words;
+    this.description = puzzle.description;
   }
-
 
 
 }
 
-  export default Puzzle;
+export default Puzzle;
