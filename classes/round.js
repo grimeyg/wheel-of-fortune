@@ -7,7 +7,6 @@ class Round {
     this.vowelsBought = [];
     this.vowelsAvail = ['a', 'e', 'i', 'o', 'u', 'y'];
   }
-
 }
 
 export default Round;

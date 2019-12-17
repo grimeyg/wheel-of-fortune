@@ -6,7 +6,6 @@ class Puzzle {
     this.description = puzzle.description;
   }
 
-
 }
 
 export default Puzzle;
