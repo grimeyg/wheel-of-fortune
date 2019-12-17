@@ -1,13 +1,15 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Puzzle from '../classes/puzzle.js';
+import Game from '../classes/game.js';
 let puzzle;
-
+let game;
 
 describe('Puzzle', function () {
-
   beforeEach(() => {
-    puzzle = new Puzzle();
+    game = new Game();
+    puzzle = new Puzzle(game.loadPuzzles()[0]);
+    console.log(puzzle);
   });
 
   it('should be a function', function () {
