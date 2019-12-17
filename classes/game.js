@@ -1,5 +1,6 @@
 import Player from './player.js';
 import Puzzle from './puzzle.js';
+import Round from './round.js';
 
 class Game {
   constructor() {
@@ -16,6 +17,14 @@ class Game {
       let player3 = new Player(name3);
       this.players.push(player1, player2, player3);
     }
+    
+    this.rounds.push(new Round())
+  }
+
+  selectPuzzle() {
+    const randCount = Math.floor(Math.random() * Math.floor(this.puzzles.length));
+    const chosenPuzzle = this.puzzles.splice(randCount, 1)
+    return chosenPuzzle;
   }
 
   loadPuzzles() {
