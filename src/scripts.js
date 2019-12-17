@@ -21,6 +21,24 @@ function loadPuzzles(data) {
   game = new Game(allPuzzles)
 }
 
+const startGameButton = $(".start-game");
+
+startGameButton.on("click", showInstructions);
+
+function showInstructions() {
+  const mainPage = $("#main-page");
+  const player1 = $("#player-1").val();
+  const player2 = $("#player-2").val();
+  const player3 = $("#player-3").val();
+  const instructHeader = $(".instruction-header");
+  const instructPage = $("#instruction-page");
+  mainPage.addClass("hidden");
+  instructPage.removeClass("hidden");
+  // console.log(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+  instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+}
+
+const game = new Game();
 
 var changeButton = document.querySelector(".change-button")
 changeButton.addEventListener("click", switchScreen)
@@ -84,3 +102,4 @@ spinButton.click(() => {
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
 });
+
