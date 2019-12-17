@@ -25,12 +25,25 @@ function showInstructions() {
 
 const game = new Game();
 
-var changeButton = document.querySelector(".change-button")
-changeButton.addEventListener("click", switchScreen)
+const changeButton = $(".change-button")
+changeButton.on("click", switchScreen)
+$(".solve").on("click", showGuessInput)
+$(".solve-enter").on("click", clickSolveEnter)
 
 function switchScreen() {
-  document.querySelector('.activity-section').classList.add('hidden')
-  document.querySelector('.game-page').classList.remove('hidden');
+  $('.activity-section').addClass('hidden')
+  $('.game-page').removeClass('hidden');
+}
+
+function showGuessInput() {
+  $('.solve-area').removeClass('hidden');
+}
+
+function clickSolveEnter() {
+  $('.solve-area').addClass('hidden');
+  // show with alert whether or not typed answer is correct
+  // if correct end round and credit player thei
+  // change turn to next player if incorrect guess
 }
 
 let sheet = $("#css");
