@@ -4,6 +4,12 @@
 // body {
 //   background-color: $primary-background;
 // }
+$colors: "red","green","blue","purple","pink","yellow","tan","orange","teal","cyan";
+
+
+// @each $color in $colors {
+//
+// }
 
 body {
   background: url(../../img/main-pic.jpg);
@@ -34,6 +40,17 @@ body {
   border: 2px solid red;
 }
 
+.wheel-1-animation {
+  animation-name: wheel-1-animate;
+  animation-duration: 1.5s;
+  animation-iteration-count: 3;
+}
+.wheel-2-animation {
+  animation-name: wheel-2-animate;
+  animation-duration: 1.5s;
+  animation-iteration-count: 3;
+}
+
 .wheel-1 {
   width: 15%;
   height: 500px;
@@ -42,7 +59,7 @@ body {
 }
 
 .wheel-2 {
-   width: 15%;
+  width: 15%;
   height: 500px;
   background-color: blue;
   border:1px solid black;
@@ -93,8 +110,117 @@ body {
   color: #DAA520;
   margin-left: 3%;
   margin-right: 2%;
+
+.gameboard {
+  background-color: rgb(100, 200, 300);
+  border-width: 7px;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: repeat(14, 60px);
+  grid-gap: 3px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 4px;
+  width: 880px;
+}
+
+aside {
+  background-color: #1F1F3D;
+  height: 100vh;
+  position: fixed;
+  width: 11%;
+  margin-right: 3%;
+  color: #fff;
+}
+
+.game-title {
+  margin-left: 500px;
+}
+
+.letter {
+  background-size: 54px 65px;
+  border: 5px solid black;
+  padding-top: 6px;
+  height: 58px;
+  width: 50px;
+}
+
+.users {
+  margin-bottom: 30px;
 }
 
 .hidden {
   display: none;
 }
+
+.round-num {
+  font-size: 32px;
+}
+
+.new-game-btn {
+  float: right;
+  margin-right: 450px;
+}
+
+.letterBank {
+  background: #1F1F3D;
+}
+
+table.letterBank {
+  background: #1F1F3D;
+  border: 5px solid black;
+  height: 230px;
+  width: 31%;
+  float: right;
+  color: #FFFFFF;
+  margin-top: 25px;
+  margin-right: 300px;
+}
+
+.solve {
+  float:right;
+  margin-top: 250px;
+}
+
+// @keyframes wheel-1-animate {
+//   0% {
+//     position: relative;
+//     bottom: 0;
+//   }
+//
+//   50% {
+//     position: relative;
+//     bottom: -500px;
+//   }
+//
+//   50.01% {
+//     position: relative;
+//     bottom: 500px;
+//   }
+//
+//   100% {
+//     position: relative;
+//     bottom: 0px;
+//   }
+// }
+
+// @keyframes wheel-2-animate {
+//   0% {
+//     position: relative;
+//     bottom: 500px;
+//     right:15%;
+//   }
+//
+//   50% {
+//     position: relative;
+//     bottom: 0px;
+//     right:15%;
+//   }
+//
+//   100%{
+//     position: relative;
+//     bottom: -500px;
+//     right:15%;
+//   }
+// }
+
