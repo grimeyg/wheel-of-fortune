@@ -5,6 +5,16 @@ import Round from '../classes/round.js';
 import Wheel from '../classes/wheel.js';
 import $ from 'jquery';
 
+const game = new Game();
+
+var changeButton = document.querySelector(".change-button")
+changeButton.addEventListener("click", switchScreen)
+
+function switchScreen() {
+  document.querySelector('.activity-section').classList.add('hidden')
+  document.querySelector('.game-page').classList.remove('hidden');
+}
+
 let sheet = $("#css");
 let spinButton = $("#spin");
 
