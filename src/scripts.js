@@ -5,7 +5,22 @@ import Round from '../classes/round.js';
 import Wheel from '../classes/wheel.js';
 import $ from 'jquery';
 
-const game = new Game();
+let game;
+
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+  .then(response => response.json())
+  .then(data => loadPuzzles(data))
+//should add an error handling alert 
+  .catch(err => console.log(err))
+
+function loadPuzzles(data) {
+  const allPuzzles = [];
+  Object.keys(data.data.puzzles).forEach(puzzleType => {
+    data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
+  })
+  game = new Game(allPuzzles)
+}
+
 
 var changeButton = document.querySelector(".change-button")
 changeButton.addEventListener("click", switchScreen)
@@ -21,7 +36,7 @@ let spinButton = $("#spin");
 spinButton.click(() => {
   let wheel = new Wheel();
   wheel.chooseValue();
-console.log(sheet);
+  console.log(sheet);
   document.styleSheets[1].insertRule(`
     @keyframes wheel-1-animate {
     0% {
