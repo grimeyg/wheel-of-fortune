@@ -3,7 +3,7 @@
   <head>
     <title>Wheel of Fortune</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./base.scss" />
+    <link id="css" rel="stylesheet" type="text/css" media="screen" href="./base.scss" />
     <script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
   </head>
   <body>
@@ -21,20 +21,20 @@
 <section class="wheel-container">
   <h2>></h2>
   <section class="wheel-1">
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
 </section>
 <section class="wheel-2">
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
 </section>
-<button type="button" name="button">Spin</button>
+<button id="spin" type="button" name="button">Spin</button>
 </section>
 <div>
 </section>
@@ -42,11 +42,11 @@
   <p class="player-2">Player 2<span>0</span></p>
   <p class="player-3">Player 3<span>0</span></p>
 </div>
- <script src="classes/game.js"></script>
- <script src="classes/puzzle.js"></script>
- <script src="classes/player.js"></script>
- <script src="classes/wheel.js"></script>
- <script src="classes/round.js"></script>
- <script src="scripts.js"></script>
+ <script src="../classes/game.js"></script>
+ <script src="../classes/puzzle.js"></script>
+ <script src="../classes/player.js"></script>
+ <script src="../classes/wheel.js"></script>
+ <script src="../classes/round.js"></script>
+ <script src="./scripts.js"></script>
   </body>
 </html>
