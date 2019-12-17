@@ -11,3 +11,5 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 import './scripts.js'
+
+import '../img/noun_Wheel_9102.svg'
