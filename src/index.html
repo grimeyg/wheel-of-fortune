@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
@@ -8,22 +9,44 @@
   <link rel="stylesheet" type="text/css" media="screen" href="./base.scss" />
   <script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
 </head>
-
 <body>
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  <div id="title-section">
-    <h1 id="wheelo-fortune">Wheel of Fortune</h1>
-    <h1 id="title-year">1836<h1>
-  </div>
-  <form id="player-input">
-    <div class="player-div"><label class="player">Player 1 </label><input class='name-input' /></div>
-    <div class="player-div"><label class="player">Player 2 </label><input class='name-input' /></div>
-    <div class="player-div"><label class="player">Player 3 </label><input class='name-input' /></div>
-  </form>
-  <div class="start-button">
-    <button class='start-game'>Submit</button>
-  </div>
-<section class='guess-board'>
+  <section id="main-page" >
+  <!-- class="hidden"> -->
+    <div id="title-section">
+      <h1 id="wheelo-fortune">Wheel of Fortune</h1>
+      <img src="../img/IMG_20191213_160130.png">
+      <h1 id="title-year">1836<h1>
+    </div>
+    <form id="player-input">
+      <div class="player-div">
+        <label class="player">Pioneer 1 </label><input class='name-input' id="player-1"/>
+      </div>
+      <div class="player-div">
+        <label class="player">Pioneer 2 </label><input class='name-input' id="player-2"/>
+      </div>
+      <div class="player-div">
+        <label class="player">Pioneer 3 </label><input class='name-input' id="player-3"/>
+      </div>
+    </form>
+    <div class="start-button">
+      <button class='start-game'>Head on out</button>
+    </div>
+  </section>
+  <section id="instruction-page" class="hidden">
+    <h1 class="instruction-header"></h1>
+    <p class="directions">In Wheel of Fortune, three pioneers
+      compete during three rounds to solve hangman-type word puzzles.
+      At the beginning of each round, pioneers are given a category
+      such as a phrase, person, place or object that consists of blank
+      spaces they must fill in with the correct letters. After random
+      selection to see who begins, pioneers take turns to either spin
+      the wooden wheel and guess a consonant, buy vowels from their
+      earned winnings or solve the puzzle. At the end of three rounds,
+      the pioneer with the most cash and prizes becomes the winner
+      and moves to the game's bonus round.</p>
+    <button class='start-game'>Head on out</button>
+  </section>
+  <!-- <section class='guess-board'>
   <p>Clue</p>
 </section>
 <section class="wheel-container">
@@ -49,13 +72,12 @@
   <p class="player-1">Player 1<span>0</span></p>
   <p class="player-2">Player 2<span>0</span></p>
   <p class="player-3">Player 3<span>0</span></p>
-</div>
- <script src="classes/game.js"></script>
- <script src="classes/puzzle.js"></script>
- <script src="classes/player.js"></script>
- <script src="classes/wheel.js"></script>
- <script src="classes/round.js"></script>
- <script src="scripts.js"></script>
-  </body>
-
+</div> -->
+  <script src="classes/game.js"></script>
+  <script src="classes/puzzle.js"></script>
+  <script src="classes/player.js"></script>
+  <script src="classes/wheel.js"></script>
+  <script src="classes/round.js"></script>
+  <script src="scripts.js"></script>
+</body>
 </html>
