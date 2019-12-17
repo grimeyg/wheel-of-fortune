@@ -22,7 +22,7 @@ class Game {
     let allPuzzles = [];
     fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
       .then(response => response.json())
-      .then(data => Object.keys(data.data.puzzles).forEach(puzzleType => {
+      .then(data => Object.keys(data.data.puzzles).forEach  (puzzleType => {
         data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
       }))
       //should add an error handling alert 
