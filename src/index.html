@@ -5,12 +5,9 @@
   <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
   <title>Wheel of Fortune</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="./base.scss" />
-  <script type="text/javascript" src="./lib/jquery-3.4.1.min.js"></script>
 </head>
-
 <body>
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+  <section class="activity-section"
   <div id="title-section">
     <h1 id="wheelo-fortune">Wheel of Fortune</h1>
     <h1 id="title-year">1836<h1>
@@ -29,33 +26,147 @@
 <section class="wheel-container">
   <h2>></h2>
   <section class="wheel-1">
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
 </section>
 <section class="wheel-2">
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
+  <div class="money-card"></div>
 </section>
-<button type="button" name="button">Spin</button>
+<button id="spin" type="button" name="button">Spin</button>
 </section>
 <div>
-</section>
   <p class="player-1">Player 1<span>0</span></p>
   <p class="player-2">Player 2<span>0</span></p>
   <p class="player-3">Player 3<span>0</span></p>
 </div>
- <script src="classes/game.js"></script>
- <script src="classes/puzzle.js"></script>
- <script src="classes/player.js"></script>
- <script src="classes/wheel.js"></script>
- <script src="classes/round.js"></script>
- <script src="scripts.js"></script>
+<button class="change-button">change-screen</button>
+</section>
+<section class="game-page hidden">
+  <aside>
+    <span class="round-num">Round 1</span>
+    <br>
+    <h3 class="users">User 1</h3>
+    <span>Total Score:</span>
+    <br>
+    <span>Round Score:</span>
+    <h3 class="users">User 2</h3>
+    <span>Total Score:</span>
+    <br>
+    <span>Round Score:</span>
+    <h3 class="users">User 3</h3>
+    <span>Total Score:</span>
+    <br>
+    <span>Round Score:</span>
+  </aside>
+  <button class="new-game-btn">New Game</button>
+  <h1 class="game-title">WHEEL OF FORTUNE!</h1>
+  <section class='gameboard'>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
+      </section>
+      <table class='letterBank'>
+     <th colspan='5'> Buy a Vowel for $100</th>
+     <tr>
+       <td class='vowel'><button>A</button></td>
+       <td class='vowel'><button>E</button></td>
+       <td class='vowel'><button>I</button></td>
+       <td class='vowel'><button>O</button></td>
+       <td class='vowel'><button>U</button></td>
+     </tr>
+     <th colspan='5'>Consonants</th>
+     <tr>
+       <td class='consonants'><button>B</button></td>
+       <td class='consonants'><button>C</button></td>
+       <td class='consonants'><button>D</button></td>
+       <td class='consonants'><button>F</button></td>
+       <td class='consonants'><button>G</button></td>
+     </tr>
+     <tr>
+       <td class='consonants'><button>H</button></td>
+       <td class='consonants'><button>J</button></td>
+       <td class='consonants'><button>K</button></td>
+       <td class='consonants'><button>L</button></td>
+       <td class='consonants'><button>M</button></td>
+     </tr>
+     <tr>
+       <td class='consonants'><button>N</button></td>
+       <td class='consonants'><button>P</button></td>
+       <td class='consonants'><button>Q</button></td>
+       <td class='consonants'><button>R</button></td>
+       <td class='consonants'><button>S</button></td>
+     </tr>
+     <tr>
+       <td class='consonants'><button>T</button></td>
+       <td class='consonants'><button>V</button></td>
+       <td class='consonants'><button>W</button></td>
+       <td class='consonants'><button>X</button></td>
+       <td class='consonants'><button>Y</button></td>
+       <td class='consonants'><button>Z</button></td>
+     </tr>
+   </table>
+   <button class="solve">SOLVE</button>
+</section>
   </body>
 
 </html>
