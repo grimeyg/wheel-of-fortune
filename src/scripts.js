@@ -6,4 +6,10 @@ import Wheel from '../classes/wheel.js';
 
 const game = new Game();
 
-console.log(game);
+var changeButton = document.querySelector(".change-button")
+changeButton.addEventListener("click", switchScreen)
+
+function switchScreen() {
+  document.querySelector('.activity-section').classList.add('hidden')
+  document.querySelector('.game-page').classList.remove('hidden');
+}
