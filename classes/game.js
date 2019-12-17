@@ -1,5 +1,5 @@
 import Player from './player.js';
-// import Puzzle from './puzzle.js';
+import Puzzle from './puzzle.js';
 
 class Game {
   constructor() {
@@ -23,7 +23,7 @@ class Game {
     fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
       .then(response => response.json())
       .then(data => Object.keys(data.data.puzzles).forEach(puzzleType => {
-        data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(puzzle))
+        data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
       }))
       //should add an error handling alert 
       .catch(err => console.log(err))
