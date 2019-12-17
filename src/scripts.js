@@ -22,49 +22,37 @@ spinButton.click(() => {
   let wheel = new Wheel();
   wheel.chooseValue();
 console.log(sheet);
-  document.styleSheets[1].insertRule(`
+  document.styleSheets[2].insertRule(`
     @keyframes wheel-1-animate {
     0% {
-      position: relative;
-      bottom: 0;
     }
 
     50% {
-      position: relative;
-      bottom: -500px;
+      bottom: -100%;
     }
 
-    50.01% {
-      position: relative;
-      bottom: 500px;
+    50.1% {
+      bottom: 100%;
     }
 
     100% {
-      position: relative;
-      bottom: 0px;
+      bottom: 0;
     }
-  }`, document.styleSheets[1].length);
+  }`, document.styleSheets[2].length);
 
-  document.styleSheets[1].insertRule(`
+  document.styleSheets[2].insertRule(`
     @keyframes wheel-2-animate {
       0% {
-        position: relative;
-        bottom: 500px;
-        right:15%;
       }
 
       50% {
-        position: relative;
         bottom: 0px;
-        right:15%;
       }
 
       100%{
-        position: relative;
-        bottom: -500px;
-        right:15%;
+        bottom: -100%;
       }
-    }`, document.styleSheets[1].length);
+    }`, document.styleSheets[2].length);
 
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
