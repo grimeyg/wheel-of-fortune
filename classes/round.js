@@ -7,6 +7,21 @@ class Round {
     this.vowelsBought = [];
     this.vowelsAvail = ['a', 'e', 'i', 'o', 'u', 'y'];
   }
+
+  handleGuess(type, letter) {
+    switch (type) {
+    case 'vowel':
+      this.vowelsAvail.splice(
+        this.vowelsAvail.indexOf(letter), 1);
+      this.vowelsBought.push(letter);
+      break;
+    case 'consonant':
+      this.lettersAvail.splice(
+        this.lettersAvail.indexOf(letter), 1);
+      this.trashLetters.push(letter);
+      break;
+    }
+  }
 }
 
 export default Round;
