@@ -26,10 +26,6 @@ body {
   justify-content: center;
 }
 
-h2 {
-  align-self: center;
-}
-
 .wheel-container {
   display: flex;
   justify-content: center;
@@ -52,16 +48,6 @@ h2 {
   border:1px solid black;
 }
 
-div {
-  height: 19.25%;
-  border: 2px solid gold;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-}
-
 #player-input{
   display: flex;
   justify-content: center;
@@ -76,7 +62,7 @@ form {
 
 .player {
   font-family: "Press Start 2P";
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #DAA520;
 }
 
@@ -99,4 +85,16 @@ form {
   margin-top: 10%;
   padding: 1%;
   width: 25%;
+}
+
+.directions {
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+.hidden {
+  display: none;
 }
