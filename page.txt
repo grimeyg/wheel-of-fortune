@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Wheel of Fortune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./base.scss" />
+    <script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <h1>Wheel of Fortune</h1>
+
+<section class="wheel-container">
+  <h2>></h2>
+  <section class="wheel-1">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</section>
+
+<section class="wheel-2">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</section>
+<button type="button" name="button">Spin</button>
+ <script src="classes/game.js"></script>
+ <script src="classes/puzzle.js"></script>
+ <script src="classes/player.js"></script>
+ <script src="classes/wheel.js"></script>
+ <script src="classes/round.js"></script>
+  </body>
+</html>
+
+
+h1 {
+ text-align: center;
+}
+
+h2 {
+  align-self: center;
+}
+
+form {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.wheel-container {
+  display: flex;
+  justify-content: center;
+  width:70%;
+  height:500px;
+  border: 2px solid red;
+}
+
+
+.wheel-1 {
+  width: 15%;
+  height: 500px;
+  background-color: red;
+  border:1px solid black;
+}
+
+.wheel-2 {
+   width: 15%;
+  height: 500px;
+  background-color: blue;
+  border:1px solid black;
+}
+
+div {
+  height: 19.25%;
+  border: 2px solid gold;
+}
