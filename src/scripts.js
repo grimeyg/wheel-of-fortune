@@ -5,14 +5,60 @@ import Round from '../classes/round.js';
 import Wheel from '../classes/wheel.js';
 import $ from 'jquery';
 
+let game;
+
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+  .then(response => response.json())
+  .then(data => loadPuzzles(data))
+//should add an error handling alert 
+  .catch(err => console.log(err))
+
+function loadPuzzles(data) {
+  const allPuzzles = [];
+  Object.keys(data.data.puzzles).forEach(puzzleType => {
+    data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
+  })
+  game = new Game(allPuzzles)
+}
+
+const startGameButton = $(".start-game");
+
+startGameButton.on("click", showInstructions);
+
+function showInstructions() {
+  const mainPage = $("#main-page");
+  const player1 = $("#player-1").val();
+  const player2 = $("#player-2").val();
+  const player3 = $("#player-3").val();
+  const instructHeader = $(".instruction-header");
+  const instructPage = $("#instruction-page");
+  mainPage.addClass("hidden");
+  instructPage.removeClass("hidden");
+  // console.log(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+  instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+}
+
 const game = new Game();
 
-var changeButton = document.querySelector(".change-button")
-changeButton.addEventListener("click", switchScreen)
+const changeButton = $(".change-button")
+changeButton.on("click", switchScreen)
+$(".solve").on("click", showGuessInput)
+$(".solve-enter").on("click", clickSolveEnter)
 
 function switchScreen() {
-  document.querySelector('.activity-section').classList.add('hidden')
-  document.querySelector('.game-page').classList.remove('hidden');
+  $('.activity-section').addClass('hidden')
+  $('.game-page').removeClass('hidden');
+}
+
+function showGuessInput() {
+  $('.solve-area').removeClass('hidden');
+}
+
+function clickSolveEnter() {
+  $('.solve-area').addClass('hidden');
+  // show with alert whether or not typed answer is correct
+  // if correct end round and credit player thei
+  // change turn to next player if incorrect guess
 }
 
 let sheet = $("#css");
@@ -21,8 +67,9 @@ let spinButton = $("#spin");
 spinButton.click(() => {
   let wheel = new Wheel();
   wheel.chooseValue();
-console.log(sheet);
+  console.log(sheet);
   document.styleSheets[2].insertRule(`
+
     @keyframes wheel-1-animate {
     0% {
     }
@@ -57,3 +104,4 @@ console.log(sheet);
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
 });
+

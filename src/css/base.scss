@@ -32,10 +32,6 @@ body {
   justify-content: center;
 }
 
-h2 {
-  align-self: center;
-}
-
 .wheel-container {
   position: fixed;
   right: 0;
@@ -101,7 +97,7 @@ form {
 
 .player {
   font-family: "Press Start 2P";
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #DAA520;
 }
 
@@ -125,6 +121,13 @@ form {
   padding: 1%;
   width: 25%;
 }
+
+.directions {
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+  margin-left: 3%;
+  margin-right: 2%;
 
 .gameboard {
   background-color: rgb(100, 200, 300);
@@ -203,6 +206,22 @@ table.letterBank {
   right: 50%
 }
 
+.solve-input {
+  float:right;
+  margin-top: 300px;
+  margin-left: 100px;
+}
+
+.solve-enter {
+  float:right;
+  margin-top: 300px;
+  margin-left: 100px;
+}
+
+.solve-area {
+  margin-left: 75px;
+}
+
 // @keyframes wheel-1-animate {
 //   0% {
 //     position: relative;
@@ -244,3 +263,4 @@ table.letterBank {
 //     right:15%;
 //   }
 // }
+
