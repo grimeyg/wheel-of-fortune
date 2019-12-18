@@ -5,6 +5,11 @@
         this.roundScore = 0;
 
     }
+
+    calculateScore() {
+    this.totalScore += this.roundScore
+  }
+  
   }
 
 export default Player;
