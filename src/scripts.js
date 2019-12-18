@@ -7,20 +7,11 @@ import $ from 'jquery';
 
 let game;
 
-async function fetchPuzzles() {
-    let response = await fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data');
-    let data = await response.json();
-    return data; 
-}
-
-fetchPuzzles()
-    .then(data => loadPuzzles(data));
-
-// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
-//   .then(response => response.json())
-//   .then(data => loadPuzzles(data))
-// //should add an error handling alert
-//   .catch(err => console.log(err))
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+  .then(response => response.json())
+  .then(data => loadPuzzles(data))
+//should add an error handling alert
+  .catch(err => console.log(err))
 
 function loadPuzzles(data) {
   const allPuzzles = [];
@@ -29,7 +20,6 @@ function loadPuzzles(data) {
   });
   game = new Game(allPuzzles);
   game.startGame()
-  console.log('done')
 }
 
 const startGameButton = $(".start-game");
