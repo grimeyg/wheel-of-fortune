@@ -17,8 +17,9 @@ function loadPuzzles(data) {
   const allPuzzles = [];
   Object.keys(data.data.puzzles).forEach(puzzleType => {
     data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
-  })
-  game = new Game(allPuzzles)
+  });
+  game = new Game(allPuzzles);
+  game.startGame()
 }
 
 const startGameButton = $(".start-game");
@@ -39,10 +40,24 @@ function showInstructions() {
   mainPage.addClass("hidden");
   instructPage.removeClass("hidden");
   instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+  displayLetters();
 }
 
 $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
+
+function displayLetters() {
+  console.log(game);
+  const letterDis = game.rounds[0].currentPuzzle.returnLetters();
+  let counter = 1;
+  letterDis.forEach(word => {
+    word.forEach(letter => {
+      $(`#${counter}`).text(letter);
+      counter++;
+    })
+    counter++;
+  })
+}
 
 function switchScreen() {
   const instructPage = $("#instruction-page");

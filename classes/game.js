@@ -24,8 +24,8 @@ class Game {
 
   selectPuzzle() {
     const randCount = Math.floor(Math.random() * Math.floor(this.puzzles.length));
-    const chosenPuzzle = this.puzzles.splice(randCount, 1)
-    return chosenPuzzle;
+    const chosenPuzzle = this.puzzles.splice(randCount, 1);
+    return chosenPuzzle[0];
   }
 
   playerActive() {
