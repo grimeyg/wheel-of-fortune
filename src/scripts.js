@@ -10,7 +10,7 @@ let game;
 fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
   .then(response => response.json())
   .then(data => loadPuzzles(data))
-//should add an error handling alert 
+//should add an error handling alert
   .catch(err => console.log(err))
 
 function loadPuzzles(data) {
@@ -26,6 +26,10 @@ const startGameButton = $(".start-game");
 startGameButton.on("click", showInstructions);
 
 function showInstructions() {
+  //remove event listener
+  startGameButton.off("click", showInstructions)
+  //add new EL
+  startGameButton.on("click", switchScreen);
   const mainPage = $("#main-page");
   const player1 = $("#player-1").val();
   const player2 = $("#player-2").val();
@@ -34,19 +38,15 @@ function showInstructions() {
   const instructPage = $("#instruction-page");
   mainPage.addClass("hidden");
   instructPage.removeClass("hidden");
-  // console.log(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
   instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
 }
 
-const game = new Game();
-
-const changeButton = $(".change-button")
-changeButton.on("click", switchScreen)
 $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
 function switchScreen() {
-  $('.activity-section').addClass('hidden')
+  const instructPage = $("#instruction-page");
+  $(instructPage).addClass('hidden')
   $('.game-page').removeClass('hidden');
 }
 
@@ -104,4 +104,3 @@ spinButton.click(() => {
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
 });
-
