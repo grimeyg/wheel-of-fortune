@@ -6,6 +6,12 @@ class Puzzle {
     this.description = puzzle.description;
   }
 
+  //create a function that returns the puzzle word in an array of arrays
+  //one array per word, each word should be an array of letters
+  returnLetters() {
+    return this.answer.split(' ')
+      .map(word => word.split(''))
+  }
 }
 
 export default Puzzle;

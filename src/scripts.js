@@ -7,18 +7,29 @@ import $ from 'jquery';
 
 let game;
 
-fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
-  .then(response => response.json())
-  .then(data => loadPuzzles(data))
-//should add an error handling alert
-  .catch(err => console.log(err))
+async function fetchPuzzles() {
+    let response = await fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data');
+    let data = await response.json();
+    return data; 
+}
+
+fetchPuzzles()
+    .then(data => loadPuzzles(data));
+
+// fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+//   .then(response => response.json())
+//   .then(data => loadPuzzles(data))
+// //should add an error handling alert
+//   .catch(err => console.log(err))
 
 function loadPuzzles(data) {
   const allPuzzles = [];
   Object.keys(data.data.puzzles).forEach(puzzleType => {
     data.data.puzzles[puzzleType].puzzle_bank.forEach(puzzle => allPuzzles.push(new Puzzle(puzzle)))
-  })
-  game = new Game(allPuzzles)
+  });
+  game = new Game(allPuzzles);
+  game.startGame()
+  console.log('done')
 }
 
 const startGameButton = $(".start-game");
@@ -39,10 +50,24 @@ function showInstructions() {
   mainPage.addClass("hidden");
   instructPage.removeClass("hidden");
   instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+  displayLetters();
 }
 
 $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
+
+function displayLetters() {
+  console.log(game);
+  const letterDis = game.rounds[0].currentPuzzle.returnLetters();
+  let counter = 1;
+  letterDis.forEach(word => {
+    word.forEach(letter => {
+      $(`#${counter}`).text(letter);
+      counter++;
+    })
+    counter++;
+  })
+}
 
 function switchScreen() {
   const instructPage = $("#instruction-page");
