@@ -16,6 +16,10 @@ body {
   background-size: cover;
 }
 
+h2 {
+  font-size: 60px;
+}
+
 #wheelo-fortune {
   color: #FFFFFF;
   display: flex;
@@ -45,13 +49,13 @@ body {
 
 .wheel-1-animation {
   animation-name: wheel-1-animate;
-  animation-duration: 1.25s;
-  animation-iteration-count: 3;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
 }
 .wheel-2-animation {
   animation-name: wheel-2-animate;
-  animation-duration: 1.25s;
-  animation-iteration-count: 3;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
 }
 
 .wheel-1 {
@@ -76,6 +80,11 @@ body {
   height: 10.65%;
   border: 2px solid gold;
   width: 100%;
+  font-size: 30px;
+  color: white;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 form {
@@ -222,45 +231,3 @@ table.letterBank {
 .solve-area {
   margin-left: 75px;
 }
-
-// @keyframes wheel-1-animate {
-//   0% {
-//     position: relative;
-//     bottom: 0;
-//   }
-//
-//   50% {
-//     position: relative;
-//     bottom: -500px;
-//   }
-//
-//   50.01% {
-//     position: relative;
-//     bottom: 500px;
-//   }
-//
-//   100% {
-//     position: relative;
-//     bottom: 0px;
-//   }
-// }
-
-// @keyframes wheel-2-animate {
-//   0% {
-//     position: relative;
-//     bottom: 500px;
-//     right:15%;
-//   }
-//
-//   50% {
-//     position: relative;
-//     bottom: 0px;
-//     right:15%;
-//   }
-//
-//   100%{
-//     position: relative;
-//     bottom: -500px;
-//     right:15%;
-//   }
-// }
