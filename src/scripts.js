@@ -22,6 +22,8 @@ function loadPuzzles(data) {
 }
 
 const startGameButton = $(".start-game");
+const startGameButton2 = $(".start-game2");
+
 
 startGameButton.on("click", showInstructions);
 
@@ -29,7 +31,7 @@ function showInstructions() {
   //remove event listener
   startGameButton.off("click", showInstructions)
   //add new EL
-  startGameButton.on("click", switchScreen);
+  startGameButton2.on("click", switchScreen);
   const mainPage = $("#main-page");
   const player1 = $("#player-1").val();
   const player2 = $("#player-2").val();
