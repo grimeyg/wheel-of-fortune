@@ -23,24 +23,41 @@ function loadPuzzles(data) {
 }
 
 const startGameButton = $(".start-game");
+const startGameButton2 = $(".start-game2");
+const body = $("body");
+
 
 startGameButton.on("click", showInstructions);
 
 function showInstructions() {
   //remove event listener
-  startGameButton.off("click", showInstructions)
+  // startGameButton.off("click", showInstructions)
   //add new EL
-  startGameButton.on("click", switchScreen);
+  startGameButton2.on("click", switchScreen);
   const mainPage = $("#main-page");
   const player1 = $("#player-1").val();
   const player2 = $("#player-2").val();
   const player3 = $("#player-3").val();
   const instructHeader = $(".instruction-header");
   const instructPage = $("#instruction-page");
+
+  // mainPage.addClass("hidden");
+  // instructPage.removeClass("hidden");
+  if (player1 && player2 && player3) {
+    mainPage.addClass("hidden");
+    instructPage.removeClass("hidden");
+    body.addClass("shadow");
+    startGameButton.off("click", showInstructions)
+    instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+      }else{
+    alert("Enter Pioneer Names!");;
+  }
+
   mainPage.addClass("hidden");
   instructPage.removeClass("hidden");
   instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
   displayLetters();
+
 }
 
 $(".solve").on("click", showGuessInput)
