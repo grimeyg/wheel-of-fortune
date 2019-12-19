@@ -23,6 +23,7 @@ function loadPuzzles(data) {
 
 const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
+const body = $("body");
 
 
 startGameButton.on("click", showInstructions);
@@ -43,6 +44,7 @@ function showInstructions() {
   if (player1 && player2 && player3) {
     mainPage.addClass("hidden");
     instructPage.removeClass("hidden");
+    body.addClass("shadow");
     startGameButton.off("click", showInstructions)
     instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
       }else{
