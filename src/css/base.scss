@@ -10,8 +10,17 @@ $colors: "red","green","blue","purple","pink","yellow","tan","orange","teal","cy
 // @each $color in $colors {
 //
 // }
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
 
 body {
+  height: 100%;
   background: url(../../img/main-pic.jpg);
   background-size: cover;
 }
@@ -33,6 +42,7 @@ body {
 }
 
 .wheel-container {
+  grid-area: right;
   position: fixed;
   right: 0;
   top: 0;
@@ -130,6 +140,23 @@ form {
   margin-right: 2%;
 }
 
+// GAME
+.game-page {
+  height: 100%;
+  display: grid;
+  grid-template-areas: "left center right";
+  // grid-template-columns: 
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
+.game-holder {
+  grid-area: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .gameboard {
   background-color: rgb(100, 200, 300);
   border-width: 7px;
@@ -143,6 +170,10 @@ form {
   width: 880px;
 }
 
+.scoreboard {
+  grid-area: left;
+}
+
 aside {
   background-color: #1F1F3D;
   position: fixed;
@@ -152,10 +183,6 @@ aside {
   width: 11%;
   margin-right: 3%;
   color: #fff;
-}
-
-.game-title {
-  margin-left: 500px;
 }
 
 .letter {
@@ -199,9 +226,10 @@ table.letterBank {
 }
 
 .solve {
-  float:right;
-  margin-top: 250px;
+  // float:right;
+  // margin-top: 250px;
 }
+
 #spin {
   position: absolute;
   right: 50%

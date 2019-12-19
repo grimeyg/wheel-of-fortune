@@ -47,7 +47,6 @@ $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
 function displayLetters() {
-  console.log(game);
   const letterDis = game.rounds[0].currentPuzzle.returnLetters();
   let counter = 1;
   letterDis.forEach(word => {
