@@ -29,7 +29,7 @@ startGameButton.on("click", showInstructions);
 
 function showInstructions() {
   //remove event listener
-  startGameButton.off("click", showInstructions)
+  // startGameButton.off("click", showInstructions)
   //add new EL
   startGameButton2.on("click", switchScreen);
   const mainPage = $("#main-page");
@@ -38,9 +38,16 @@ function showInstructions() {
   const player3 = $("#player-3").val();
   const instructHeader = $(".instruction-header");
   const instructPage = $("#instruction-page");
-  mainPage.addClass("hidden");
-  instructPage.removeClass("hidden");
-  instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+  // mainPage.addClass("hidden");
+  // instructPage.removeClass("hidden");
+  if (player1 && player2 && player3) {
+    mainPage.addClass("hidden");
+    instructPage.removeClass("hidden");
+    startGameButton.off("click", showInstructions)
+    instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+      }else{
+    alert("Enter Pioneer Names!");;
+  }
 }
 
 $(".solve").on("click", showGuessInput)
