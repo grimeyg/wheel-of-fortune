@@ -154,7 +154,14 @@ form {
   justify-content: center;
   font-family: "Press Start 2P";
   font-size: 2rem;
-  color: #5e2f00;
+  color: #DAA520;
+}
+
+.aunt {
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+  margin-left: 3%;
 }
 
 .directions {
@@ -207,6 +214,11 @@ aside {
 
 .hidden {
   display: none;
+}
+
+.shadow {
+background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),url(../../img/main-pic.jpg);
+background-size: cover;
 }
 
 .round-num {
