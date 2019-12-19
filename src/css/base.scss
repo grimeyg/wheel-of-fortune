@@ -24,12 +24,27 @@ body {
   justify-content: center;
 }
 
+.main-page-sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -4%;
+}
+
+#wheel2 {
+  margin-left: .5%;
+}
+
 #title-year {
   color: #5e2f00;
   display: flex;
   font-family: "Girassol";
   font-size: 6rem;
   justify-content: center;
+}
+
+.border-design{
+margin-left: 29%;
 }
 
 .wheel-container {
@@ -120,6 +135,26 @@ form {
   margin-top: 10%;
   padding: 1%;
   width: 25%;
+}
+
+.start-game2 {
+  background-color: #DAA520;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Press Start 2P";
+  font-size: 1.5rem;
+  margin-top: 3%;
+  padding: 1%;
+  width: 25%;
+}
+
+.instruction-header {
+  display: flex;
+  justify-content: center;
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #5e2f00;
 }
 
 .directions {
