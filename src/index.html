@@ -8,11 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <section id="main-page" >
+  <section id="main-page">
     <div id="title-section">
       <h1 id="wheelo-fortune">Wheel of Fortune</h1>
-      <img src="../img/IMG_20191213_160130.png">
-      <h1 id="title-year">1836<h1>
+      <div class="main-page-sec">
+        <img class="wagon-wheel" src="images/noun_Wheel_9102.svg"/>
+        <h1 id="title-year">1836</h1>
+        <img class="wagon-wheel" id="wheel2" src="images/noun_Wheel_9102.svg"/>
+      </div>
     </div>
     <form id="player-input">
       <div class="player-div">
@@ -26,11 +29,13 @@
       </div>
     </form>
     <div class="start-button">
-      <button class='start-game'>Head on out</button>
+      <button class='start-game'>Pack yer wagon!</button>
     </div>
   </section>
   <section id="instruction-page" class="hidden">
     <h1 class="instruction-header"></h1>
+    <img class="border-design" src="images/border-design.png">
+    <p class="aunt">Aunt Esther says...</p>
     <p class="directions">In Wheel of Fortune, three pioneers
       compete during three rounds to solve hangman-type word puzzles.
       At the beginning of each round, pioneers are given a category
@@ -41,9 +46,12 @@
       earned winnings or solve the puzzle. At the end of three rounds,
       the pioneer with the most cash and prizes becomes the winner
       and moves to the game's bonus round.</p>
-    <button class='start-game'>Head on out</button>
+      <img class="border-design" src="images/border-design.png">
+      <div class="start-button">
+        <button class='start-game2'>Head on out!</button>
+      </div>
   </section>
-  <section class='guess-board'>
+  <!-- <section class='guess-board'>
   <section class="activity-section">
     <section class='guess-board'>
       <p>Clue</p>
@@ -54,9 +62,9 @@
         <p class="player-3">Player 3<span>0</span></p>
       </div>
       <button class="change-button">change-screen</button>
-    </section>
+    </section> -->
 <section class="game-page hidden">
-  <aside>
+  <aside class="scoreboard">
     <span class="round-num">Round 1</span>
     <br>
     <h3 class="users">User 1</h3>
@@ -72,64 +80,64 @@
     <br>
     <span>Round Score:</span>
   </aside>
-  <button class="new-game-btn">New Game</button>
+  <div class="game-holder">
   <h1 class="game-title">WHEEL OF FORTUNE!</h1>
   <section class='gameboard'>
         <div class='letter'></div>
+        <div class='letter' id='0'></div>
+        <div class='letter' id='1'></div>
+        <div class='letter' id='2'></div>
+        <div class='letter' id='3'></div>
+        <div class='letter' id='4'></div>
+        <div class='letter' id='5'></div>
+        <div class='letter' id='6'></div>
+        <div class='letter' id='7'></div>
+        <div class='letter' id='8'></div>
+        <div class='letter' id='9'></div>
+        <div class='letter' id='10'></div>
+        <div class='letter' id='11'></div>
         <div class='letter'></div>
         <div class='letter'></div>
+        <div class='letter' id='12'></div>
+        <div class='letter' id='13'></div>
+        <div class='letter' id='14'></div>
+        <div class='letter' id='15'></div>
+        <div class='letter' id='16'></div>
+        <div class='letter' id='17'></div>
+        <div class='letter' id='18'></div>
+        <div class='letter' id='19'></div>
+        <div class='letter' id='20'></div>
+        <div class='letter' id='21'></div>
+        <div class='letter' id='22'></div>
+        <div class='letter' id='23'></div>
         <div class='letter'></div>
         <div class='letter'></div>
+        <div class='letter' id='24'></div>
+        <div class='letter' id='25'></div>
+        <div class='letter' id='26'></div>
+        <div class='letter' id='27'></div>
+        <div class='letter' id='28'></div>
+        <div class='letter' id='29'></div>
+        <div class='letter' id='30'></div>
+        <div class='letter' id='31'></div>
+        <div class='letter' id='32'></div>
+        <div class='letter' id='33'></div>
+        <div class='letter' id='34'></div>
+        <div class='letter' id='35'></div>
         <div class='letter'></div>
         <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
-        <div class='letter'></div>
+        <div class='letter' id='36'></div>
+        <div class='letter' id='37'></div>
+        <div class='letter' id='38'></div>
+        <div class='letter' id='39'></div>
+        <div class='letter' id='40'></div>
+        <div class='letter' id='41'></div>
+        <div class='letter' id='42'></div>
+        <div class='letter' id='43'></div>
+        <div class='letter' id='44'></div>
+        <div class='letter' id='45'></div>
+        <div class='letter' id='46'></div>
+        <div class='letter' id='47'></div>
         <div class='letter'></div>
       </section>
       <table class='letterBank'>
@@ -172,8 +180,8 @@
        <td class='consonants'><button>Z</button></td>
      </tr>
    </table>
+  </div>
    <section class="wheel-container">
-     <h2>-------</h2>
      <section class="wheel-1">
        <div class="money-card">$40</div>
        <div class="money-card">BANKRUPT</div>
@@ -198,11 +206,11 @@
      </section>
      <button id="spin" type="button" name="button">Spin</button>
     </section>
-     <div>
+     <!-- <div>
        <p class="player-1">Player 1<span>0</span></p>
        <p class="player-2">Player 2<span>0</span></p>
        <p class="player-3">Player 3<span>0</span></p>
-     </div>
+     </div> -->
      <button class="change-button">change-screen</button>
    </section>
    <button class="solve">SOLVE</button>

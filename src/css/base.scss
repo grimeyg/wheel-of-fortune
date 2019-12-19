@@ -10,8 +10,17 @@ $colors: "red","green","blue","purple","pink","yellow","tan","orange","teal","cy
 // @each $color in $colors {
 //
 // }
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
 
 body {
+  height: 100%;
   background: url(../../img/main-pic.jpg);
   background-size: cover;
 }
@@ -28,6 +37,17 @@ h2 {
   justify-content: center;
 }
 
+.main-page-sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -4%;
+}
+
+#wheel2 {
+  margin-left: .5%;
+}
+
 #title-year {
   color: #5e2f00;
   display: flex;
@@ -36,7 +56,12 @@ h2 {
   justify-content: center;
 }
 
+.border-design{
+margin-left: 29%;
+}
+
 .wheel-container {
+  grid-area: right;
   position: fixed;
   right: 0;
   top: 0;
@@ -131,12 +156,56 @@ form {
   width: 25%;
 }
 
+.start-game2 {
+  background-color: #DAA520;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Press Start 2P";
+  font-size: 1.5rem;
+  margin-top: 3%;
+  padding: 1%;
+  width: 25%;
+}
+
+.instruction-header {
+  display: flex;
+  justify-content: center;
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+}
+
+.aunt {
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+  color: #DAA520;
+  margin-left: 3%;
+}
+
 .directions {
   font-family: "Press Start 2P";
   font-size: 2rem;
   color: #DAA520;
   margin-left: 3%;
   margin-right: 2%;
+}
+
+// GAME
+.game-page {
+  height: 100%;
+  display: grid;
+  grid-template-areas: "left center right";
+  // grid-template-columns: 
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
+.game-holder {
+  grid-area: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .gameboard {
@@ -152,6 +221,10 @@ form {
   width: 880px;
 }
 
+.scoreboard {
+  grid-area: left;
+}
+
 aside {
   background-color: #1F1F3D;
   position: fixed;
@@ -161,10 +234,6 @@ aside {
   width: 11%;
   margin-right: 3%;
   color: #fff;
-}
-
-.game-title {
-  margin-left: 500px;
 }
 
 .letter {
@@ -181,6 +250,11 @@ aside {
 
 .hidden {
   display: none;
+}
+
+.shadow {
+background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),url(../../img/main-pic.jpg);
+background-size: cover;
 }
 
 .round-num {
@@ -208,9 +282,10 @@ table.letterBank {
 }
 
 .solve {
-  float:right;
-  margin-top: 250px;
+  // float:right;
+  // margin-top: 250px;
 }
+
 #spin {
   position: absolute;
   right: 50%
