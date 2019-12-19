@@ -8,11 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <section id="main-page" >
+  <section id="main-page">
     <div id="title-section">
       <h1 id="wheelo-fortune">Wheel of Fortune</h1>
-      <img src="../img/IMG_20191213_160130.png">
-      <h1 id="title-year">1836<h1>
+      <div class="main-page-sec">
+        <img class="wagon-wheel" src="images/noun_Wheel_9102.svg"/>
+        <h1 id="title-year">1836</h1>
+        <img class="wagon-wheel" id="wheel2" src="images/noun_Wheel_9102.svg"/>
+      </div>
     </div>
     <form id="player-input">
       <div class="player-div">
@@ -26,11 +29,12 @@
       </div>
     </form>
     <div class="start-button">
-      <button class='start-game'>Head on out</button>
+      <button class='start-game'>Pack yer wagon!</button>
     </div>
   </section>
   <section id="instruction-page" class="hidden">
     <h1 class="instruction-header"></h1>
+    <img class="border-design" src="images/border-design.png">
     <p class="directions">In Wheel of Fortune, three pioneers
       compete during three rounds to solve hangman-type word puzzles.
       At the beginning of each round, pioneers are given a category
@@ -41,9 +45,12 @@
       earned winnings or solve the puzzle. At the end of three rounds,
       the pioneer with the most cash and prizes becomes the winner
       and moves to the game's bonus round.</p>
-    <button class='start-game'>Head on out</button>
+      <img class="border-design" src="images/border-design.png">
+      <div class="start-button">
+        <button class='start-game2'>Head on out!</button>
+      </div>
   </section>
-  <section class='guess-board'>
+  <!-- <section class='guess-board'>
   <section class="activity-section">
     <section class='guess-board'>
       <p>Clue</p>
@@ -54,7 +61,7 @@
         <p class="player-3">Player 3<span>0</span></p>
       </div>
       <button class="change-button">change-screen</button>
-    </section>
+    </section> -->
 <section class="game-page hidden">
   <aside>
     <span class="round-num">Round 1</span>
@@ -173,7 +180,7 @@
      </tr>
    </table>
    <section class="wheel-container">
-     <h2>></h2>
+     <h2></h2>
      <section class="wheel-1">
        <div class="money-card"></div>
        <div class="money-card"></div>
