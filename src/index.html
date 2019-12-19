@@ -64,7 +64,7 @@
       <button class="change-button">change-screen</button>
     </section> -->
 <section class="game-page hidden">
-  <aside>
+  <aside class="scoreboard">
     <span class="round-num">Round 1</span>
     <br>
     <h3 class="users">User 1</h3>
@@ -80,9 +80,10 @@
     <br>
     <span>Round Score:</span>
   </aside>
-  <button class="new-game-btn">New Game</button>
+  <div class="game-holder">
   <h1 class="game-title">WHEEL OF FORTUNE!</h1>
   <section class='gameboard'>
+        <div class='letter'></div>
         <div class='letter' id='0'></div>
         <div class='letter' id='1'></div>
         <div class='letter' id='2'></div>
@@ -95,6 +96,8 @@
         <div class='letter' id='9'></div>
         <div class='letter' id='10'></div>
         <div class='letter' id='11'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
         <div class='letter' id='12'></div>
         <div class='letter' id='13'></div>
         <div class='letter' id='14'></div>
@@ -107,6 +110,8 @@
         <div class='letter' id='21'></div>
         <div class='letter' id='22'></div>
         <div class='letter' id='23'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
         <div class='letter' id='24'></div>
         <div class='letter' id='25'></div>
         <div class='letter' id='26'></div>
@@ -119,6 +124,8 @@
         <div class='letter' id='33'></div>
         <div class='letter' id='34'></div>
         <div class='letter' id='35'></div>
+        <div class='letter'></div>
+        <div class='letter'></div>
         <div class='letter' id='36'></div>
         <div class='letter' id='37'></div>
         <div class='letter' id='38'></div>
@@ -131,14 +138,7 @@
         <div class='letter' id='45'></div>
         <div class='letter' id='46'></div>
         <div class='letter' id='47'></div>
-        <div class='letter' id='48'></div>
-        <div class='letter' id='49'></div>
-        <div class='letter' id='50'></div>
-        <div class='letter' id='51'></div>
-        <div class='letter' id='52'></div>
-        <div class='letter' id='53'></div>
-        <div class='letter' id='54'></div>
-        <div class='letter' id='55'></div>
+        <div class='letter'></div>
       </section>
       <table class='letterBank'>
      <th colspan='5'> Buy a Vowel for $100</th>
@@ -180,6 +180,7 @@
        <td class='consonants'><button>Z</button></td>
      </tr>
    </table>
+  </div>
    <section class="wheel-container">
      <h2></h2>
      <section class="wheel-1">
@@ -206,11 +207,11 @@
      </section>
      <button id="spin" type="button" name="button">Spin</button>
     </section>
-     <div>
+     <!-- <div>
        <p class="player-1">Player 1<span>0</span></p>
        <p class="player-2">Player 2<span>0</span></p>
        <p class="player-3">Player 3<span>0</span></p>
-     </div>
+     </div> -->
      <button class="change-button">change-screen</button>
    </section>
    <button class="solve">SOLVE</button>
