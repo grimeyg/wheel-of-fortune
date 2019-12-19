@@ -97,8 +97,10 @@ let spinButton = $("#spin");
 
 spinButton.click(() => {
   let wheel = new Wheel();
-  wheel.chooseValue();
-  console.log(sheet);
+  let currentValueIndex = wheel.chooseValue();
+  let positionValue = wheel.getPosition(currentValueIndex);
+  console.log(wheel.sections[currentValueIndex].value);
+  console.log(positionValue);
   document.styleSheets[2].insertRule(`
 
     @keyframes wheel-1-animate {
@@ -134,4 +136,6 @@ spinButton.click(() => {
 
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
+  $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
+
 });
