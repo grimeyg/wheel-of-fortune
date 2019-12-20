@@ -4,7 +4,6 @@ class Round {
     this.trashLetters = [];
     // eslint-disable-next-line max-len
     this.lettersAvail = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'];
-    this.vowelsBought = [];
     this.vowelsAvail = ['a', 'e', 'i', 'o', 'u', 'y'];
   }
 
@@ -22,6 +21,25 @@ class Round {
       break;
     }
   }
+
+  moveLettersToTrash(letter, type) {
+    if (type === 'vowel') {
+    let indexposition =  this.vowelsAvail.indexOf(letter);
+      if(indexposition !== -1) {
+        this.vowelsAvail.splice(indexposition, 1);
+        this.trashLetters.push(letter);
+      }
+    }
+  }
+
+  countLetterMatches(testLetter) {
+    return this.currentPuzzle.answer.filter((letter) => {
+       return testLetter === letter;
+    }).length
+  };
+
+
+
 }
 
 export default Round;
