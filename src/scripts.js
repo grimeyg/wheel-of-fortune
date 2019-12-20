@@ -89,8 +89,11 @@ $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
 function displayLetters() {
-  const letterDis = game.rounds[0].currentPuzzle.returnLetters();
+  const currPuzzle = game.rounds[0].currentPuzzle
+  const letterDis = currPuzzle.returnLetters();
   let counter = 1;
+  $('.category').text(currPuzzle.category);
+  $('.description').text(currPuzzle.description);
   letterDis.forEach(word => {
     word.forEach(letter => {
       $(`#${counter}`).text(letter).addClass('hide-letter');
