@@ -26,8 +26,33 @@ const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
+function matchVowel(e) {
+  let children = [];
+  let letter = $(e.target).text();
+  $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
+  $(e.target).attr('disabled', 'true');
+  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter.toUpperCase())) {
+    game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
+      if (foundLetter === letter) {
+      $(`div:contains(${letter})`).removeClass('hide-letter');
+      }
+    });
+    return;
+  }
+}
+
+// line 32 target the curr puzzle of the round do the includes on that
+
 
 startGameButton.on("click", showInstructions);
+
+$('.vowel-list').on('click', (e) => {
+  console.log('yo');
+  if ($( e.target ).hasClass('vowel')) {
+    console.log('inthere');
+   matchVowel(e);
+  }
+});
 
 function showInstructions() {
   //remove event listener
@@ -68,7 +93,7 @@ function displayLetters() {
   let counter = 1;
   letterDis.forEach(word => {
     word.forEach(letter => {
-      $(`#${counter}`).text(letter);
+      $(`#${counter}`).text(letter).addClass('hide-letter');
       counter++;
     })
     counter++;

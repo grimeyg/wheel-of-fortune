@@ -196,7 +196,7 @@ form {
   height: 100%;
   display: grid;
   grid-template-areas: "left center right";
-  // grid-template-columns: 
+  // grid-template-columns:
   grid-template-columns: 1fr 8fr 1fr;
 }
 
@@ -277,7 +277,7 @@ table.letterBank {
   width: 31%;
   float: right;
   color: #FFFFFF;
-  margin-top: 25px;
+  margin-top: 5px;
   margin-right: 300px;
 }
 
@@ -303,6 +303,16 @@ table.letterBank {
   margin-left: 100px;
 }
 
+.past-guesses {
+float:right;
+margin-top: 300px;
+margin-left: 300px;
+}
+
 .solve-area {
   margin-left: 75px;
+}
+
+.hide-letter {
+  color: #64c8ff;
 }
