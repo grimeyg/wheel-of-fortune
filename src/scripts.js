@@ -27,7 +27,6 @@ const startGameButton2 = $(".start-game2");
 const body = $("body");
 
 function matchVowel(e) {
-  let children = [];
   let letter = $(e.target).text();
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
@@ -46,9 +45,9 @@ function matchVowel(e) {
 
 startGameButton.on("click", showInstructions);
 
-$('.vowel-list').on('click', (e) => {
+$('.letterBank').on('click', (e) => {
   console.log('yo');
-  if ($( e.target ).hasClass('vowel')) {
+  if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
     console.log('inthere');
    matchVowel(e);
   }
