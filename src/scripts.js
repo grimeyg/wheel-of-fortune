@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 let game;
 
+
 fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
   .then(response => response.json())
   .then(data => loadPuzzles(data))
@@ -96,43 +97,27 @@ let sheet = $("#css");
 let spinButton = $("#spin");
 
 spinButton.click(() => {
+  $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "")
+  $("#wheel1").removeClass("wheel-1-animation");
+  $("#wheel2").removeClass("wheel-2-animation");
+  $("#wheel1").removeClass("wheel-1");
+  $("#wheel2").removeClass("wheel-2");
+  $("#wheel1").addClass("wheel-1");
+  $("#wheel2").addClass("wheel-2");
+  let colors = ["red","black","green","blue","#E6D10F","orange","rebeccapurple","tan","gray","orange","teal","#E6D10F", "red", "black", "blue","green","rebeccapurple","gold"]
+  let cards = document.querySelectorAll(".money-card");
+
+  cards.forEach(card => {
+    console.log(card);
+    card.style.backgroundColor = colors[0];
+    colors.shift();
+  })
+
   let wheel = new Wheel();
   let currentValueIndex = wheel.chooseValue();
   let positionValue = wheel.getPosition(currentValueIndex);
   console.log(wheel.sections[currentValueIndex].value);
   console.log(positionValue);
-  document.styleSheets[2].insertRule(`
-
-    @keyframes wheel-1-animate {
-    0% {
-    }
-
-    50% {
-      bottom: -100%;
-    }
-
-    50.1% {
-      bottom: 100%;
-    }
-
-    100% {
-      bottom: 0;
-    }
-  }`, document.styleSheets[2].length);
-
-  document.styleSheets[2].insertRule(`
-    @keyframes wheel-2-animate {
-      0% {
-      }
-
-      50% {
-        bottom: 0px;
-      }
-
-      100%{
-        bottom: -100%;
-      }
-    }`, document.styleSheets[2].length);
 
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
