@@ -121,11 +121,12 @@ function clickSolveEnter() {
 
 let sheet = $("#css");
 let spinButton = $("#spin");
+let positionValue;
 
 spinButton.click(() => {
   let wheel = new Wheel();
   let currentValueIndex = wheel.chooseValue();
-  let positionValue = wheel.getPosition(currentValueIndex);
+  positionValue = wheel.getPosition(currentValueIndex);
   console.log(wheel.sections[currentValueIndex].value);
   console.log(positionValue);
   document.styleSheets[2].insertRule(`

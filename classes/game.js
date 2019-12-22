@@ -4,7 +4,7 @@ import Round from './round.js';
 
 class Game {
   constructor(puzzles) {
-    this.turn = 0;
+    this.round = 0;
     this.players = [];
     this.rounds = [];
     this.puzzles = puzzles;
@@ -27,7 +27,7 @@ class Game {
     const chosenPuzzle = this.puzzles.splice(randCount, 1);
     return chosenPuzzle[0];
   }
-
+ 
   playerActive() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1];
@@ -38,6 +38,10 @@ class Game {
     }
   }
 
+  endRound() {
+    this.round++;
+    this.rounds.push(new Round(this.selectPuzzle()))
+  }
 
 }
 
