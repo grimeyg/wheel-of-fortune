@@ -206,6 +206,14 @@ form {
   flex-flow: column wrap;
   align-items: center;
   justify-content: space-around;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  th {
+    color: white;
+  }
 }
 
 .gameboard {
@@ -266,18 +274,20 @@ background-size: cover;
   margin-right: 450px;
 }
 
+  //Letter Table
 .letterBank {
   background: #1F1F3D;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 80%;
 }
 
-table.letterBank {
+section.letterBank {
   background: #1F1F3D;
   border: 5px solid black;
-  height: 230px;
-  width: 31%;
   float: right;
   color: #FFFFFF;
-  margin-top: 25px;
+  margin-top: 5px;
   margin-right: 300px;
 }
 
@@ -297,10 +307,20 @@ table.letterBank {
   margin-left: 100px;
 }
 
+.hide-letter {
+  color: #64c8ff;
+}
+
 .solve-enter {
   float:right;
   margin-top: 300px;
   margin-left: 100px;
+}
+
+.past-guesses {
+float:right;
+margin-top: 300px;
+margin-left: 300px;
 }
 
 .solve-area {
@@ -334,4 +354,5 @@ table.letterBank {
   100%{
     bottom: -100%;
   }
-}
+  
+
