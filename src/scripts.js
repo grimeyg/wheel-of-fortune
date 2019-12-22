@@ -28,6 +28,8 @@ const body = $("body");
 
 function matchVowel(e) {
   let letter = $(e.target).text();
+  let matches = game.rounds[0].countLetterMatches(letter);
+  game.currentPlayer.calculateGuessScore(matches, positionValue);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[0].currentPuzzle.answer.split('').includes(letter.toUpperCase())) {
@@ -88,7 +90,7 @@ $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
 function displayLetters() {
-  const currPuzzle = game.rounds[0].currentPuzzle
+  const currPuzzle = game.rounds[0].currentPuzzle;
   const letterDis = currPuzzle.returnLetters();
   let counter = 1;
   $('.category').text(currPuzzle.category);
