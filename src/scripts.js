@@ -27,12 +27,12 @@ const startGameButton2 = $(".start-game2");
 const body = $("body");
 
 function matchVowel(e) {
-  let letter = $(e.target).text();
+  let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[0].countLetterMatches(letter);
   game.currentPlayer.calculateGuessScore(matches, positionValue);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
-  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter.toUpperCase())) {
+  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
     game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
