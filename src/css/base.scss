@@ -290,8 +290,7 @@ section.letterBank {
 }
 
 .solve {
-  // float:right;
-  // margin-top: 250px;
+
 }
 
 #spin {
@@ -318,11 +317,22 @@ section.letterBank {
 .past-guesses {
 float:right;
 margin-top: 300px;
-margin-left: 300px;
+margin-left: 700px;
 }
 
 .solve-area {
-  margin-left: 75px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
+
+.make-guess {
+  position: absolute;
+  right: 600px;
+  top: 650px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-size: 32px;
 }
 
 #p1box {

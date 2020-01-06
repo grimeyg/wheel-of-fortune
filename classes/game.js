@@ -48,6 +48,9 @@ class Game {
   endRound() {
     this.round++;
     this.rounds.push(new Round(this.selectPuzzle()))
+    this.players.forEach(player => {
+      player.roundScore = 0;
+    })
   }
 }
 
