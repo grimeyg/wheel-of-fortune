@@ -27,7 +27,7 @@ const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
-function matchVowel(e) {
+function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[0].countLetterMatches(letter);
   if (spinResult === 'BANKRUPT') {
@@ -55,7 +55,7 @@ startGameButton.on("click", showInstructions);
 
 $('.letterBank').on('click', (e) => {
   if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
-   matchVowel(e);
+   matchLetter(e);
   }
 });
 
