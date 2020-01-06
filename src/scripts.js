@@ -34,7 +34,7 @@ const body = $("body");
 
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
-  let matches = game.rounds[0].countLetterMatches(letter);
+  let matches = game.rounds[game.round].countLetterMatches(letter);
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
   } else {
@@ -43,19 +43,18 @@ function matchLetter(e) {
   $(`.player-${game.currentPlayer.playerNum}-round-score`).text(game.currentPlayer.roundScore);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
-  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
-    game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
+  if (game.rounds[game.round].currentPuzzle.answer.split('').includes(letter)) {
+    game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
     }
     });
     return;
 
+  } else {
+    game.playerActive()
   }
-  restrictGuess()
-
-  } else {game.playerActive()}
-
+restrictGuess();
 }
 
 // line 32 target the curr puzzle of the round do the includes on that
@@ -64,7 +63,7 @@ function restrictGuess() {
   $('.letterBank').children().addClass("hidden");
   $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
   //disable end of each turn
-  //clear out after 
+  //clear out after
 }
 
 function allowGuess() {
@@ -112,11 +111,8 @@ function showInstructions() {
   }
 }
 
-$(".solve").on("click", showGuessInput)
-$(".solve-enter").on("click", clickSolveEnter)
-
 function displayLetters() {
-  const currPuzzle = game.rounds[0].currentPuzzle;
+  const currPuzzle = game.rounds[game.round].currentPuzzle;
   const letterDis = currPuzzle.returnLetters();
   let counter = 1;
   $('.category').text(currPuzzle.category);
@@ -138,26 +134,32 @@ function switchScreen() {
 
 function showGuessInput() {
   $('.solve-area').removeClass('hidden');
-  console.log(puzzle.answer)
+  console.log(game.rounds[game.round].currentPuzzle.answer);
+  $('.correct').text('');
+  $('.incorrect').text('');
 }
 
 function clickSolveEnter() {
-  const currPuzzle = game.rounds[0].currentPuzzle
+  $('.solve-area').addClass('hidden');
+  const currPuzzle = game.rounds[game.round].currentPuzzle
   if($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
     game.currentPlayer.roundScore += 75;
     game.currentPlayer.calculateRoundScore();
     game.endRound();
+    $('.gameboard').children().text('');
+    displayLetters();
     $('.guess-validation-msg').append('<span class="correct">Correct!!!</span>');
   } else {
     game.playerActive()
     $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
     }
+  }
 
-  $('.solve-area').addClass('hidden');
+  // $('.solve-area').addClass('hidden');
   // show with alert whether or not typed answer is correct
   // if correct end round and credit player thei
   // change turn to next player if incorrect guess
-}
+
 
 
 $(".solve").on("click", showGuessInput)
