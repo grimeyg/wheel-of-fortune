@@ -30,7 +30,12 @@ const body = $("body");
 function matchVowel(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[0].countLetterMatches(letter);
-  game.currentPlayer.calculateGuessScore(matches, positionValue);
+  if (spinResult === 'BANKRUPT') {
+    game.currentPlayer.roundScore = 0;
+  } else {
+    game.currentPlayer.calculateGuessScore(matches, spinResult);
+  }
+  console.log('score', game.currentPlayer.roundScore);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
@@ -49,9 +54,7 @@ function matchVowel(e) {
 startGameButton.on("click", showInstructions);
 
 $('.letterBank').on('click', (e) => {
-  console.log('yo');
   if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
-    console.log('inthere');
    matchVowel(e);
   }
 });
@@ -124,7 +127,7 @@ function clickSolveEnter() {
 
 let sheet = $("#css");
 let spinButton = $("#spin");
-let positionValue;
+let spinResult;
 
 spinButton.click(() => {
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "")
@@ -138,16 +141,14 @@ spinButton.click(() => {
   let cards = document.querySelectorAll(".money-card");
 
   cards.forEach(card => {
-    console.log(card);
     card.style.backgroundColor = colors[0];
     colors.shift();
   })
 
   let wheel = new Wheel();
   let currentValueIndex = wheel.chooseValue();
-  positionValue = wheel.getPosition(currentValueIndex);
-  console.log(wheel.sections[currentValueIndex].value);
-  console.log(positionValue);
+  let positionValue = wheel.getPosition(currentValueIndex);
+  spinResult = wheel.sections[currentValueIndex].value;
 
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
