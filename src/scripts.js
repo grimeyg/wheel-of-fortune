@@ -77,7 +77,7 @@ function showInstructions() {
     startGameButton.off("click", showInstructions)
     instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
       }else{
-    alert("Enter Pioneer Names!");;
+    alert("Enter Pioneer Names!");
   }
 
   mainPage.addClass("hidden");
@@ -113,14 +113,30 @@ function switchScreen() {
 
 function showGuessInput() {
   $('.solve-area').removeClass('hidden');
+  console.log(puzzle.answer)
 }
 
 function clickSolveEnter() {
+  const currPuzzle = game.rounds[0].currentPuzzle
+  if($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
+    game.currentPlayer.roundScore += 75;
+    game.currentPlayer.calculateRoundScore();
+    game.endRound();
+    $('.guess-validation-msg').append('<span class="correct">Correct!!!</span>');
+  } else {
+    game.playerActive()
+    $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
+    }
+
   $('.solve-area').addClass('hidden');
   // show with alert whether or not typed answer is correct
   // if correct end round and credit player thei
   // change turn to next player if incorrect guess
 }
+
+
+$(".solve").on("click", showGuessInput)
+$(".solve-enter").on("click", clickSolveEnter)
 
 let sheet = $("#css");
 let spinButton = $("#spin");
