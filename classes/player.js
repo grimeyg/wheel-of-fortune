@@ -13,7 +13,10 @@ class Player {
   calculateGuessScore(matches, spinVal) {
     this.roundScore += matches * spinVal;
   }
-  
+
+  guessVowel(){
+    this.roundScore = this.roundScore - 10;
+  }
 }
 
 export default Player;

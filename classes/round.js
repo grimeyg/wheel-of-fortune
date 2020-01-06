@@ -12,7 +12,7 @@ class Round {
     case 'vowel':
       this.vowelsAvail.splice(
         this.vowelsAvail.indexOf(letter), 1);
-      this.vowelsBought.push(letter);
+      this.trashLetters.push(letter);
       break;
     case 'consonant':
       this.lettersAvail.splice(
@@ -38,8 +38,7 @@ class Round {
     }).length
   };
 
-
-
+  // guessVowel
 }
 
 export default Round;
