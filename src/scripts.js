@@ -35,6 +35,7 @@ function matchLetter(e) {
   } else {
     game.currentPlayer.calculateGuessScore(matches, spinResult);
   }
+  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(game.currentPlayer.roundScore);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
@@ -90,15 +91,21 @@ function showInstructions() {
     body.addClass("shadow");
     startGameButton.off("click", showInstructions)
     instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
+    game.players[0].name = player1;
+    game.players[1].name = player2;
+    game.players[2].name = player3;
+    $('.player-1-name').text(player1);
+    $('.player-2-name').text(player2);
+    $('.player-3-name').text(player3);
+    displayLetters();
     } else {
     alert("Enter Pioneer Names!");;
   }
 
-  mainPage.addClass("hidden");
-  instructPage.removeClass("hidden");
-  instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
-  displayLetters();
-
+  //remove all below once done testing, move display letters up. 
+  // mainPage.addClass("hidden");
+  // instructPage.removeClass("hidden");
+  // instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
 }
 
 $(".solve").on("click", showGuessInput)
