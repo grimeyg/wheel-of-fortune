@@ -35,7 +35,6 @@ function matchLetter(e) {
   } else {
     game.currentPlayer.calculateGuessScore(matches, spinResult);
   }
-  console.log('score', game.currentPlayer.roundScore);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
@@ -49,7 +48,9 @@ function matchLetter(e) {
 }
 
 // line 32 target the curr puzzle of the round do the includes on that
+function displayScore(playerNum) {
 
+}
 
 startGameButton.on("click", showInstructions);
 
@@ -79,7 +80,7 @@ function showInstructions() {
     body.addClass("shadow");
     startGameButton.off("click", showInstructions)
     instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
-      }else{
+    } else {
     alert("Enter Pioneer Names!");;
   }
 
