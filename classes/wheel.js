@@ -9,7 +9,7 @@ class Wheel {
           {value: 25,
            iterationPosition: 3.089}, //good
           {value: "BANKRUPT",
-           iterationPosition: 3.12},
+           iterationPosition: 3.11},
           {value: 40,
            iterationPosition: 3.14},
           {value: "Golden Nugget!!!",
@@ -19,7 +19,7 @@ class Wheel {
           {value: 25,
            iterationPosition: 3.25},
           {value: 20,
-           iterationPosition: 3.33}, //good
+           iterationPosition: 3.3}, //good
           {value: "BANKRUPT",
            iterationPosition: 3.5},
           {value: 15,

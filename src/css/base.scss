@@ -4,7 +4,7 @@
 // body {
 //   background-color: $primary-background;
 // }
-$colors: "red","green","blue","purple","pink","yellow","tan","orange","teal","cyan";
+
 
 
 // @each $color in $colors {
@@ -74,12 +74,12 @@ margin-left: 29%;
 
 .wheel-1-animation {
   animation-name: wheel-1-animate;
-  animation-duration: 0.75s;
+  animation-duration: 0.25s;
   animation-fill-mode: forwards;
 }
 .wheel-2-animation {
   animation-name: wheel-2-animate;
-  animation-duration: 0.75s;
+  animation-duration: 0.25s;
   animation-fill-mode: forwards;
 }
 
@@ -102,7 +102,7 @@ margin-left: 29%;
 }
 
 .money-card {
-  height: 10.65%;
+  height: 11.2%;
   border: 2px solid gold;
   width: 100%;
   font-size: 30px;
@@ -305,6 +305,10 @@ section.letterBank {
   margin-left: 100px;
 }
 
+.hide-letter {
+  color: #64c8ff;
+}
+
 .solve-enter {
   float:right;
   margin-top: 300px;
@@ -321,6 +325,32 @@ margin-left: 300px;
   margin-left: 75px;
 }
 
-.hide-letter {
-  color: #64c8ff;
+@keyframes wheel-1-animate {
+  0% {
+  }
+
+  50% {
+    bottom: -100%;
+  }
+
+  50.1% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: 0;
+  }
 }
+@keyframes wheel-2-animate {
+  0% {
+  }
+
+  50% {
+    bottom: 0px;
+  }
+
+  100%{
+    bottom: -100%;
+  }
+  
+
