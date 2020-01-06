@@ -12,7 +12,7 @@ class Wheel {
            iterationPosition: 3.11},
           {value: 40,
            iterationPosition: 3.14},
-          {value: "Golden Nugget!!!",
+          {value: 150,
            iterationPosition: 3.1665},
           {value: 30,
            iterationPosition: 3.2}, //good
@@ -30,7 +30,8 @@ class Wheel {
            iterationPosition: 3.62},
           {value: 20,
            iterationPosition: 3.64},
-          {value: "LOSE TURN",
+          //lose turn case on 34 swapped out 
+          {value: 0,
            iterationPosition: 3.666}, //good
           {value: 15,
            iterationPosition: 3.7}, //good

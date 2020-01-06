@@ -14,9 +14,9 @@ class Game {
 
   startGame(name1, name2, name3) {
     if (this.players.length === 0) {
-      let player1 = new Player(name1);
-      let player2 = new Player(name2);
-      let player3 = new Player(name3);
+      let player1 = new Player(name1, 1);
+      let player2 = new Player(name2, 2);
+      let player3 = new Player(name3, 3);
       this.players.push(player1, player2, player3);
     }
     this.currentPlayer = this.players[0]
