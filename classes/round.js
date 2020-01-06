@@ -33,8 +33,8 @@ class Round {
   }
 
   countLetterMatches(testLetter) {
-    return this.currentPuzzle.answer.filter((letter) => {
-       return testLetter === letter;
+    return this.currentPuzzle.answer.toUpperCase().split('').filter((letter) => {
+      return testLetter === letter;
     }).length
   };
 

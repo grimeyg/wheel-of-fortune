@@ -27,11 +27,12 @@ const startGameButton2 = $(".start-game2");
 const body = $("body");
 
 function matchVowel(e) {
-  let children = [];
-  let letter = $(e.target).text();
+  let letter = $(e.target).text().toUpperCase();
+  let matches = game.rounds[0].countLetterMatches(letter);
+  game.currentPlayer.calculateGuessScore(matches, positionValue);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
-  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter.toUpperCase())) {
+  if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
     game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
@@ -46,9 +47,9 @@ function matchVowel(e) {
 
 startGameButton.on("click", showInstructions);
 
-$('.vowel-list').on('click', (e) => {
+$('.letterBank').on('click', (e) => {
   console.log('yo');
-  if ($( e.target ).hasClass('vowel')) {
+  if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
     console.log('inthere');
    matchVowel(e);
   }
@@ -89,7 +90,7 @@ $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
 function displayLetters() {
-  const currPuzzle = game.rounds[0].currentPuzzle
+  const currPuzzle = game.rounds[0].currentPuzzle;
   const letterDis = currPuzzle.returnLetters();
   let counter = 1;
   $('.category').text(currPuzzle.category);
@@ -122,11 +123,12 @@ function clickSolveEnter() {
 
 let sheet = $("#css");
 let spinButton = $("#spin");
+let positionValue;
 
 spinButton.click(() => {
   let wheel = new Wheel();
   let currentValueIndex = wheel.chooseValue();
-  let positionValue = wheel.getPosition(currentValueIndex);
+  positionValue = wheel.getPosition(currentValueIndex);
   console.log(wheel.sections[currentValueIndex].value);
   console.log(positionValue);
   document.styleSheets[2].insertRule(`
