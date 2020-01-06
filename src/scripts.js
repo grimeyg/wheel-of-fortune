@@ -21,38 +21,62 @@ function loadPuzzles(data) {
   });
   game = new Game(allPuzzles);
   game.startGame()
+
+  restrictGuess()
+
+  $("#p1box").css("background-color", "yellow");
+
 }
 
 const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
-function matchVowel(e) {
+function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[0].countLetterMatches(letter);
-  game.currentPlayer.calculateGuessScore(matches, positionValue);
+  if (spinResult === 'BANKRUPT') {
+    game.currentPlayer.roundScore = 0;
+  } else {
+    game.currentPlayer.calculateGuessScore(matches, spinResult);
+  }
+  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(game.currentPlayer.roundScore);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[0].currentPuzzle.answer.split('').includes(letter)) {
     game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
-      }
+    }
     });
     return;
+
   }
+  restrictGuess()
+
+  } else {game.playerActive()}
+
 }
 
 // line 32 target the curr puzzle of the round do the includes on that
 
+function restrictGuess() {
+  $('.letterBank').children().addClass("hidden");
+  $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
+  //disable end of each turn
+  //clear out after 
+}
+
+function allowGuess() {
+  $('.spin-text').remove();
+  $('.letterBank').children().removeClass("hidden");
+}
 
 startGameButton.on("click", showInstructions);
 
 $('.letterBank').on('click', (e) => {
-  console.log('yo');
   if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
-    console.log('inthere');
-   matchVowel(e);
+   matchLetter(e);
   }
 });
 
@@ -76,15 +100,16 @@ function showInstructions() {
     body.addClass("shadow");
     startGameButton.off("click", showInstructions)
     instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
-      }else{
-    alert("Enter Pioneer Names!");
+    game.players[0].name = player1;
+    game.players[1].name = player2;
+    game.players[2].name = player3;
+    $('.player-1-name').text(player1);
+    $('.player-2-name').text(player2);
+    $('.player-3-name').text(player3);
+    displayLetters();
+    } else {
+    alert("Enter Pioneer Names!");;
   }
-
-  mainPage.addClass("hidden");
-  instructPage.removeClass("hidden");
-  instructHeader.text(`Welcome Pioneers ${player1}, ${player2}, and ${player3}!`)
-  displayLetters();
-
 }
 
 $(".solve").on("click", showGuessInput)
@@ -107,7 +132,7 @@ function displayLetters() {
 
 function switchScreen() {
   const instructPage = $("#instruction-page");
-  $(instructPage).addClass('hidden')
+  $(instructPage).addClass('hidden');
   $('.game-page').removeClass('hidden');
 }
 
@@ -140,7 +165,7 @@ $(".solve-enter").on("click", clickSolveEnter)
 
 let sheet = $("#css");
 let spinButton = $("#spin");
-let positionValue;
+let spinResult;
 
 spinButton.click(() => {
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "")
@@ -154,19 +179,18 @@ spinButton.click(() => {
   let cards = document.querySelectorAll(".money-card");
 
   cards.forEach(card => {
-    console.log(card);
     card.style.backgroundColor = colors[0];
     colors.shift();
   })
 
   let wheel = new Wheel();
   let currentValueIndex = wheel.chooseValue();
-  positionValue = wheel.getPosition(currentValueIndex);
-  console.log(wheel.sections[currentValueIndex].value);
-  console.log(positionValue);
+  let positionValue = wheel.getPosition(currentValueIndex);
+  spinResult = wheel.sections[currentValueIndex].value;
 
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
 
+  allowGuess();
 });
