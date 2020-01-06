@@ -21,7 +21,11 @@ function loadPuzzles(data) {
   });
   game = new Game(allPuzzles);
   game.startGame()
+
   restrictGuess()
+
+  $("#p1box").css("background-color", "yellow");
+
 }
 
 const startGameButton = $(".start-game");
@@ -43,11 +47,15 @@ function matchLetter(e) {
     game.rounds[0].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
-      }
+    }
     });
     return;
+
   }
   restrictGuess()
+
+  } else {game.playerActive()}
+
 }
 
 // line 32 target the curr puzzle of the round do the includes on that

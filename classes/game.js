@@ -1,6 +1,7 @@
 import Player from './player.js';
 import Puzzle from './puzzle.js';
 import Round from './round.js';
+import $ from 'jquery';
 
 class Game {
   constructor(puzzles) {
@@ -27,14 +28,20 @@ class Game {
     const chosenPuzzle = this.puzzles.splice(randCount, 1);
     return chosenPuzzle[0];
   }
- 
+
   playerActive() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1];
+      $("#p1box").css("background-color", "");
+      $("#p2box").css("background-color", "yellow");
     } else if (this.currentPlayer === this.players[1]) {
       this.currentPlayer = this.players[2];
+      $("#p2box").css("background-color", "");
+      $("#p3box").css("background-color", "yellow");
     } else if (this.currentPlayer === this.players[2]) {
       this.currentPlayer = this.players[0];
+      $("#p3box").css("background-color", "");
+      $("#p1box").css("background-color", "yellow");
     }
   }
 
@@ -42,7 +49,6 @@ class Game {
     this.round++;
     this.rounds.push(new Round(this.selectPuzzle()))
   }
-
 }
 
 
