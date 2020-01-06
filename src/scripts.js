@@ -45,11 +45,21 @@ function matchLetter(e) {
     });
     return;
   }
+  restrictGuess()
 }
 
 // line 32 target the curr puzzle of the round do the includes on that
-function displayScore(playerNum) {
 
+function restrictGuess() {
+  $('.letterBank').children().addClass("hidden");
+  $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
+  //disable end of each turn
+  //clear out after 
+}
+
+function allowGuess() {
+  $('.spin-text').remove();
+  $('.letterBank').children().removeClass("hidden");
 }
 
 startGameButton.on("click", showInstructions);
@@ -111,7 +121,7 @@ function displayLetters() {
 
 function switchScreen() {
   const instructPage = $("#instruction-page");
-  $(instructPage).addClass('hidden')
+  $(instructPage).addClass('hidden');
   $('.game-page').removeClass('hidden');
 }
 
@@ -155,4 +165,5 @@ spinButton.click(() => {
   $(".wheel-2").addClass("wheel-2-animation");
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
 
+  allowGuess();
 });
