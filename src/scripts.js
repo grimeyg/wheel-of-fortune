@@ -21,6 +21,7 @@ function loadPuzzles(data) {
   });
   game = new Game(allPuzzles);
   game.startGame()
+  restrictGuess()
 }
 
 const startGameButton = $(".start-game");
