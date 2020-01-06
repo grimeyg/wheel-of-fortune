@@ -27,7 +27,7 @@ class Game {
     const chosenPuzzle = this.puzzles.splice(randCount, 1);
     return chosenPuzzle[0];
   }
- 
+
   playerActive() {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1];
@@ -41,6 +41,9 @@ class Game {
   endRound() {
     this.round++;
     this.rounds.push(new Round(this.selectPuzzle()))
+    this.players.forEach(player => {
+      player.roundScore = 0;
+    })
   }
 
 }
