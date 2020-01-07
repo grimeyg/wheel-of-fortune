@@ -35,6 +35,7 @@ const body = $("body");
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
+  game.rounds[game.round].handleGuess(letter);
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
   } else {
@@ -49,12 +50,14 @@ function matchLetter(e) {
       $(`div:contains(${letter})`).removeClass('hide-letter');
     }
     });
-    return;
-
   } else {
     game.playerActive()
   }
-restrictGuess();
+
+  if (game.rounds[game.round].checkAnswerMatch()) {
+    game.endRound();
+  }
+  restrictGuess()
 }
 
 // line 32 target the curr puzzle of the round do the includes on that
@@ -107,7 +110,7 @@ function showInstructions() {
     $('.player-3-name').text(player3);
     displayLetters();
     } else {
-    alert("Enter Pioneer Names!");;
+    alert("Enter Pioneer Names!");
   }
 }
 
