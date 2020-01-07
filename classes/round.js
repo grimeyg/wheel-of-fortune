@@ -1,7 +1,7 @@
 class Round {
   constructor(puzzle) {
     this.currentPuzzle = puzzle;
-    this.trashLetters = [];
+    this.trashLetters = [' '];
     // eslint-disable-next-line max-len
     this.lettersAvail = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'a', 'e', 'i', 'o', 'u'];
     // this.vowelsAvail = [];
@@ -30,7 +30,7 @@ class Round {
     return this.currentPuzzle.answer.toUpperCase().split('').filter((letter) => {
       return testLetter === letter;
     }).length
-  };
+  }
 
   // guessVowel
 }
