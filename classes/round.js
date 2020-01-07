@@ -8,7 +8,7 @@ class Round {
   }
 
   //need to check if trashLetters cover all of answers
-  //make a remove duplicate array of unique letters 
+  //make a remove duplicate array of unique letters
 
   handleGuess(letter) {
     // case 'vowel':
@@ -32,7 +32,6 @@ class Round {
     }).length
   }
 
-  // guessVowel
 }
 
 export default Round;

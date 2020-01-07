@@ -30,12 +30,7 @@ const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
-//
-
-//some of these need to be triggered on spins
-//create a seperate function for third case here, call that function in the first spin handler awaiting other click
 function spinResultCheck() {
-  console.log(spinResult)
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
     $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
@@ -69,6 +64,9 @@ function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
   guessResult(letter, matches);
+  let vowelCheck = checkVowel(letter);
+  if(vowelCheck === false){return console.log("no")};
+  if(vowelCheck === true){game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
 
   if (matches) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
@@ -79,21 +77,27 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
-
+  
+  $("#spin").prop('disabled', false)
   checkClickPuzzleComp()
   restrictGuess()
 }
 
-// line 32 target the curr puzzle of the round do the includes on that
+function checkVowel(letter){
+  if(letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U"){
+    if(game.currentPlayer.roundScore > 9){
+      return true
+    } else {return false}
+  } else {null}
+}
 
 function restrictGuess() {
   $('.letterBank').children().addClass("hidden");
   $('.letterBank').append('<p class=\'spin-text\'>Please spin the !</p>');
-  //disable end of each turn
-  //clear out after
 }
 
 function allowGuess() {
+  $("#spin").prop('disabled', true);
   $('.spin-text').remove();
   $('.letterBank').children().removeClass("hidden");
 }
