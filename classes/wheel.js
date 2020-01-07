@@ -31,7 +31,7 @@ class Wheel {
           {value: 20,
            iterationPosition: 3.64},
           //lose turn case on 34 swapped out 
-          {value: 0,
+          {value: "LOSE TURN",
            iterationPosition: 3.666}, //good
           {value: 15,
            iterationPosition: 3.7}, //good
