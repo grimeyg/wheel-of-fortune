@@ -30,33 +30,57 @@ const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
-function matchLetter(e) {
-  let letter = $(e.target).text().toUpperCase();
-  let matches = game.rounds[game.round].countLetterMatches(letter);
-  game.rounds[game.round].handleGuess(letter);
+//
 
+//some of these need to be triggered on spins
+//create a seperate function for third case here, call that function in the first spin handler awaiting other click
+function spinResultCheck() {
+  console.log(spinResult)
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
+    $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
+    game.playerActive();
+    restrictGuess()
+  } else if (spinResult === 'LOSE TURN') {
+    game.playerActive();
+    restrictGuess()
   } else {
-    game.currentPlayer.calculateGuessScore(matches, spinResult);
+    allowGuess();
   }
+} 
+
+function guessResult(letter, matches) {
+  game.currentPlayer.calculateGuessScore(matches, spinResult);
+  game.rounds[game.round].handleGuess(letter);
   $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
+}
+
+function checkClickPuzzleComp() {
+  if (game.rounds[game.round].checkAnswerMatch()) {
+    game.endRound();
+    updateBoard();
+  }
+}
+
+//rename to display letter 
+function matchLetter(e) {
   $(e.target).attr('disabled', 'true');
-  if (game.rounds[game.round].currentPuzzle.answer.split('').includes(letter)) {
+  let letter = $(e.target).text().toUpperCase();
+  let matches = game.rounds[game.round].countLetterMatches(letter);
+  guessResult(letter, matches);
+
+  if (matches) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
-      $(`div:contains(${letter})`).removeClass('hide-letter');
-    }
+        $(`div:contains(${letter})`).removeClass('hide-letter');
+      }
     });
   } else {
     game.playerActive()
   }
 
-  if (game.rounds[game.round].checkAnswerMatch()) {
-    game.endRound();
-    updateBoard()
-  } 
+  checkClickPuzzleComp()
   restrictGuess()
 }
 
@@ -64,7 +88,7 @@ function matchLetter(e) {
 
 function restrictGuess() {
   $('.letterBank').children().addClass("hidden");
-  $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
+  $('.letterBank').append('<p class=\'spin-text\'>Please spin the !</p>');
   //disable end of each turn
   //clear out after
 }
@@ -78,7 +102,7 @@ startGameButton.on("click", showInstructions);
 
 $('.letterBank').on('click', (e) => {
   if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
-   matchLetter(e);
+    matchLetter(e);
   }
 });
 
@@ -109,7 +133,7 @@ function showInstructions() {
     $('.player-2-name').text(player2);
     $('.player-3-name').text(player3);
     displayLetters();
-    } else {
+  } else {
     alert("Enter Pioneer Names!");
   }
 }
@@ -155,14 +179,14 @@ function clickSolveEnter() {
   } else {
     game.playerActive()
     $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
-    }
-    $('.solve-input').val('');
   }
+  $('.solve-input').val('');
+}
 
-  // $('.solve-area').addClass('hidden');
-  // show with alert whether or not typed answer is correct
-  // if correct end round and credit player thei
-  // change turn to next player if incorrect guess
+// $('.solve-area').addClass('hidden');
+// show with alert whether or not typed answer is correct
+// if correct end round and credit player thei
+// change turn to next player if incorrect guess
 
 
 
@@ -198,7 +222,7 @@ spinButton.click(() => {
   $(".wheel-2").addClass("wheel-2-animation");
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
 
-  allowGuess();
+  spinResultCheck();
 });
 
 function updateBoard() {
