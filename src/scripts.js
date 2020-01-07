@@ -54,7 +54,7 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
-
+  $("#spin").prop('disabled', false)
   if (game.rounds[game.round].checkAnswerMatch()) {
     game.endRound();
   }
@@ -78,6 +78,7 @@ function restrictGuess() {
 }
 
 function allowGuess() {
+  $("#spin").prop('disabled', true);
   $('.spin-text').remove();
   $('.letterBank').children().removeClass("hidden");
 }
@@ -205,7 +206,6 @@ spinButton.click(() => {
   $(".wheel-1").addClass("wheel-1-animation");
   $(".wheel-2").addClass("wheel-2-animation");
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
-
   allowGuess();
 });
 
