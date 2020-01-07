@@ -47,10 +47,15 @@ class Game {
 
   endRound() {
     this.round++;
-    this.rounds.push(new Round(this.selectPuzzle()))
-    this.players.forEach(player => {
-      player.roundScore = 0;
-    })
+    if(this.round > 2) {
+      this.rounds.push(new Round(this.selectPuzzle()))
+      this.players.forEach(player => {
+        player.roundScore = 0;
+      })
+    } else {
+      // enter bonus round, sort the player with highest totalScore, pop that player out
+      // have that player enter the round with a new puzzle, possibly new rules
+    }
   }
 }
 

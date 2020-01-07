@@ -347,6 +347,16 @@ margin-left: 700px;
   margin: 10px;
 }
 
+.arrow {
+  position:absolute;
+  right: 45px;
+  top: 420px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-size: 32px;
+}
+
 @keyframes wheel-1-animate {
   0% {
   }

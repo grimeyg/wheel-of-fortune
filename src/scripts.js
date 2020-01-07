@@ -23,9 +23,7 @@ function loadPuzzles(data) {
   game.startGame()
 
   restrictGuess()
-
-  $("#p1box").css("background-color", "steelblue");
-
+  $("#p1box").css("background-color", "orange");
 }
 
 const startGameButton = $(".start-game");
@@ -150,12 +148,13 @@ function clickSolveEnter() {
     game.currentPlayer.calculateRoundScore();
     game.endRound();
     $('.gameboard').children().text('');
-    displayLetters();
     $('.guess-validation-msg').append('<span class="correct">Correct!!!</span>');
+    updateBoard();
   } else {
     game.playerActive()
     $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
     }
+    $('.solve-input').val('');
   }
 
   // $('.solve-area').addClass('hidden');
@@ -199,3 +198,11 @@ spinButton.click(() => {
 
   allowGuess();
 });
+
+function updateBoard() {
+  $('.gameboard').children().text('');
+  displayLetters()
+  $('.consonants').prop('disabled', false);
+  $('.vowels').prop('disabled', false);
+  $('.round-num').text(`Round ${game.round + 1}`)
+}
