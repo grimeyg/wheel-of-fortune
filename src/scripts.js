@@ -33,6 +33,9 @@ const body = $("body");
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
+  let vowelCheck = checkVowel(letter);
+  if(vowelCheck === false){return console.log("no")};
+  if(vowelCheck === true){game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
   game.rounds[game.round].handleGuess(letter);
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
@@ -45,8 +48,8 @@ function matchLetter(e) {
   if (game.rounds[game.round].currentPuzzle.answer.split('').includes(letter)) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
-      $(`div:contains(${letter})`).removeClass('hide-letter');
-    }
+        $(`div:contains(${letter})`).removeClass('hide-letter');
+      }
     });
   } else {
     game.playerActive()
@@ -54,10 +57,17 @@ function matchLetter(e) {
 
   if (game.rounds[game.round].checkAnswerMatch()) {
     game.endRound();
-  } 
+  }
   restrictGuess()
 }
 
+function checkVowel(letter){
+  if(letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U"){
+    if(game.currentPlayer.roundScore > 9){
+      return true
+    } else {return false}
+  } else {null}
+}
 // line 32 target the curr puzzle of the round do the includes on that
 
 function restrictGuess() {
