@@ -34,12 +34,13 @@ function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
   game.rounds[game.round].handleGuess(letter);
+
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
   } else {
     game.currentPlayer.calculateGuessScore(matches, spinResult);
   }
-  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(game.currentPlayer.roundScore);
+  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
   $(e.target).attr('disabled', 'true');
   if (game.rounds[game.round].currentPuzzle.answer.split('').includes(letter)) {
@@ -54,6 +55,7 @@ function matchLetter(e) {
 
   if (game.rounds[game.round].checkAnswerMatch()) {
     game.endRound();
+    updateBoard()
   } 
   restrictGuess()
 }
