@@ -35,8 +35,9 @@ const body = $("body");
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[0].countLetterMatches(letter);
-  console.log('matchCt', matches)
-  console.log('spinVal', spinResult)
+  game.rounds[0].handleGuess(letter);
+  console.log('checkMatch', game.rounds[0].checkAnswerMatch())
+
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
   } else {
@@ -54,6 +55,10 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
+
+  if (game.rounds[game.round].checkAnswerMatch()) {
+    game.endRound();
+  } 
   restrictGuess()
 }
 

@@ -3,33 +3,27 @@ class Round {
     this.currentPuzzle = puzzle;
     this.trashLetters = [];
     // eslint-disable-next-line max-len
-    this.lettersAvail = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
-    this.vowelsAvail = ['a', 'e', 'i', 'o', 'u'];
+    this.lettersAvail = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'a', 'e', 'i', 'o', 'u'];
+    // this.vowelsAvail = [];
   }
 
-  handleGuess(type, letter) {
-    switch (type) {
-    case 'vowel':
-      this.vowelsAvail.splice(
-        this.vowelsAvail.indexOf(letter), 1);
-      this.trashLetters.push(letter);
-      break;
-    case 'consonant':
-      this.lettersAvail.splice(
-        this.lettersAvail.indexOf(letter), 1);
-      this.trashLetters.push(letter);
-      break;
-    }
+  //need to check if trashLetters cover all of answers
+  //make a remove duplicate array of unique letters 
+
+  handleGuess(letter) {
+    // case 'vowel':
+    //   this.vowelsAvail.splice(
+    //     this.vowelsAvail.indexOf(letter), 1);
+    //   this.trashLetters.push(letter);
+    //   break;
+    this.lettersAvail.splice(
+      this.lettersAvail.indexOf(letter), 1);
+    this.trashLetters.push(letter);
   }
 
-  moveLettersToTrash(letter, type) {
-    if (type === 'vowel') {
-    let indexposition =  this.vowelsAvail.indexOf(letter);
-      if(indexposition !== -1) {
-        this.vowelsAvail.splice(indexposition, 1);
-        this.trashLetters.push(letter);
-      }
-    }
+  checkAnswerMatch() {
+    const answerLetters = [... new Set(this.currentPuzzle.answer.split(''))];
+    return answerLetters.every(letter => this.trashLetters.includes(letter))
   }
 
   countLetterMatches(testLetter) {
