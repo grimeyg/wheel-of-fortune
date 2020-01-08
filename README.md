@@ -10,9 +10,9 @@ On the first page, players will be prompted to choose their names. They will the
 - open http://localhost:8080/ in your browser to play the game!
 
 ## Screenshots of Project
-![Intro Screen]("https://user-images.githubusercontent.com/49801538/71952754-0c0c9880-319d-11ea-9f2f-d0a53367ad59.png">)
-![Rules Screen]("https://user-images.githubusercontent.com/49801538/71952764-19c21e00-319d-11ea-899c-09b8f3e695de.png">)
-![Game Page]("https://user-images.githubusercontent.com/49801538/71952776-29d9fd80-319d-11ea-8d04-6633acc41838.png">)
+![Intro Screen]("https://user-images.githubusercontent.com/49801538/71952754-0c0c9880-319d-11ea-9f2f-d0a53367ad59.png")
+![Rules Screen]("https://user-images.githubusercontent.com/49801538/71952764-19c21e00-319d-11ea-899c-09b8f3e695de.png")
+![Game Page]("https://user-images.githubusercontent.com/49801538/71952776-29d9fd80-319d-11ea-8d04-6633acc41838.png")
 
 
 ## Tools Used to Build Project
