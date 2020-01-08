@@ -243,3 +243,8 @@ function updateBoard() {
 function updateBonusRound() {
     $('.round-num').text('Bonus Round!')
   }
+
+  function showPrize(prize) {
+    $('.prize-container')
+      .append(`<img class="prize-img" src="./images/${prize}.jpeg" />`);
+  }
