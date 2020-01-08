@@ -83,12 +83,16 @@ function matchLetter(e) {
   }
   if (vowelCheck === true) {
     game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10;
-    alertDisplay('vowel');
+    guessTrigger(letter, matches)
+    return alertDisplay('vowel');
   }
 
-  $(e.target).attr('disabled', 'true');
+  guessTrigger(letter, matches)
   guessResult(letter, matches);
+}
 
+function guessTrigger(letter, matches) {
+  $(e.target).attr('disabled', 'true');
   flipMatchedLetters(letter, matches);
 
   $(".solve").prop('disabled', false)
