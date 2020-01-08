@@ -8,7 +8,7 @@ import $ from 'jquery';
 
 let game;
 
-let colors = ["red","black","green","blue","#E6D10F","orange","rebeccapurple","tan","gray","orange","teal","#E6D10F", "red", "black", "blue","green","rebeccapurple","gold"]
+let colors = ["red", "black", "green", "blue", "#E6D10F", "orange", "rebeccapurple", "tan", "gray", "orange", "teal", "#E6D10F", "red", "black", "blue", "green", "rebeccapurple", "gold"]
 let cards = document.querySelectorAll(".money-card");
 
 cards.forEach(card => {
@@ -79,8 +79,13 @@ function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
   let vowelCheck = checkVowel(letter);
-  if (vowelCheck === false) {return console.log("no")};
-  if (vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
+  if (vowelCheck === false) {
+    return alertDisplay('noVowel');
+  }
+  if (vowelCheck === true) {
+    game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10;
+    alertDisplay('vowel');
+  }
 
   $(e.target).attr('disabled', 'true');
   guessResult(letter, matches);
@@ -191,11 +196,17 @@ function alertDisplay(alertType, spin, matchCount, score) {
   case 'noMatch':
     $('.alerts').text(`No matches, better luck further down the trail!`);
     break;
+  case 'noVowel':
+    $('.alerts').text(`You don't have the funds for that vowel traveler!`);
+    break;  
+  case 'vowel':
+    $('.alerts').text(`Enjoy that shiny new vowel.`);
+    break;  
   case 'puzzleGuessWin':
-    $('.alerts').text('');
+    $('.alerts').text('Good guess traveler! Here\'s 75 gold!');
     break;
   case 'puzzleGuessLoss':
-    $('.alerts').text('');
+    $('.alerts').text('Not quite right, keep on panning.');
     break;
   }
 }
@@ -207,7 +218,7 @@ function switchScreen() {
 }
 
 function showGuessInput() {
-  if(game.round === 3) {
+  if (game.round === 3) {
     let bonusRound = game.rounds[game.round];
     let prize = bonusRound.getPrize();
     showPrize(prize);
@@ -224,17 +235,17 @@ function showGuessInput() {
 
 function clickSolveEnter() {
   $('.solve-area').addClass('hidden');
-  const currPuzzle = game.rounds[game.round].currentPuzzle
+  const currPuzzle = game.rounds[game.round].currentPuzzle;
   if ($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
     game.currentPlayer.roundScore += 75;
     game.currentPlayer.calculateRoundScore();
     game.endRound();
     $('.gameboard').children().text('');
-    $('.guess-validation-msg').append('<span class="correct">Correct!!!</span>');
+    alertDisplay('puzzleGuessWin')
     updateBoard();
   } else {
     game.playerActive()
-    $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
+    alertDisplay('puzzleGuessLoss')
   }
   $('.solve-input').val('');
 }
