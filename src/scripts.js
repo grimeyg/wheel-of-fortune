@@ -258,3 +258,9 @@ function updateBonusRound() {
     $('.prize-container')
       .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
   }
+
+  topPlayerButton.addEventListener('click', showTopPlayers);
+  var topPlayerButton = document.querySelector('#top-button');
+  function showTopPlayers() {
+  topPlayerBoard.classList.toggle('hidden');
+};
