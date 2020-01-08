@@ -209,6 +209,11 @@ function updateBoard() {
   $('.round-num').text(`Round ${game.round + 1}`)
 }
 
-updateBonusround() {
+function updateBonusround() {
     $('.round-num').text('Bonus Round!')
+  }
+
+  function showPrize(prize) {
+    $('.prize-container')
+      .append(`<img class="prize-img" src="./images/${prize}.jpeg" />`);
   }
