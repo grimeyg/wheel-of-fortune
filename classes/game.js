@@ -46,6 +46,11 @@ class Game {
       $("#p3box").css("background-color", "");
       $("#p1box").css("background-color", "orange");
     }
+    // $('.alerts').text(`${this.currentPlayer.name} you're up, guess or spin!`);
+  }
+
+  findTopPlayer() {
+    return this.players.sort((a, b) => b.totalScore - a.totalScore)[0];
   }
 
   endRound() {
@@ -56,11 +61,12 @@ class Game {
         player.roundScore = 0;
       })
     } else {
+      this.currentPlayer = this.findTopPlayer();
       this.rounds.push(new BonusRound(this.selectPuzzle()))
       this.players.forEach(player => {
         player.roundScore = 0;
       })
-    }
+    } 
   }
 }
 
