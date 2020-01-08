@@ -72,7 +72,6 @@ margin-left: 29%;
   display: flex;
   justify-content: center;
   width:12%;
-  border: 2px solid red;
 }
 
 .wheel-1-animation {
@@ -82,6 +81,16 @@ margin-left: 29%;
 }
 .wheel-2-animation {
   animation-name: wheel-2-animate;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+.wheel-3-animation {
+  animation-name: wheel-3-animate;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+.wheel-4-animation {
+  animation-name: wheel-4-animate;
   animation-duration: 0.25s;
   animation-fill-mode: forwards;
 }
@@ -397,6 +406,39 @@ section.letterBank {
   }
 }
 @keyframes wheel-2-animate {
+  0% {
+  }
+
+  50% {
+    bottom: 0px;
+  }
+
+  100%{
+    bottom: -100%;
+  }
+}
+
+
+.hidden {
+  display: none;
+}
+@keyframes wheel-3-animate {
+  0% {
+  }
+
+  50% {
+    bottom: -100%;
+  }
+
+  50.1% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+@keyframes wheel-4-animate {
   0% {
   }
 
