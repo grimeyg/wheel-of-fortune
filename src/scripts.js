@@ -233,7 +233,6 @@ function switchScreen() {
 function showGuessInput() {
   $("#spin").prop('disabled', true);
   $('.solve-area').removeClass('hidden');
-  console.log(game.rounds[game.round].currentPuzzle.answer);
   $('.correct').text('');
   $('.incorrect').text('');
 }

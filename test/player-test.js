@@ -29,6 +29,4 @@ describe('Player', function () {
     expect(player.guessVowel()).to.equal(player.roundScore -10);
   });
 
-
-
 });

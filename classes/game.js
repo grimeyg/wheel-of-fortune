@@ -46,7 +46,6 @@ class Game {
       $("#p3box").css("background-color", "");
       $("#p1box").css("background-color", "orange");
     }
-    // $('.alerts').text(`${this.currentPlayer.name} you're up, guess or spin!`);
   }
 
   findTopPlayer() {
