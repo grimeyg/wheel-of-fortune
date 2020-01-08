@@ -211,10 +211,10 @@ function alertDisplay(alertType, spin, matchCount, score) {
     break;
   case 'noVowel':
     $('.alerts').text(`You don't have the funds for that vowel traveler!`);
-    break;  
+    break;
   case 'vowel':
     $('.alerts').text(`Enjoy that shiny new vowel.`);
-    break;  
+    break;
   case 'puzzleGuessWin':
     $('.alerts').text('Good guess traveler! Here\'s 75 gold! Spin first on the next puzzle.');
     break;
@@ -340,3 +340,43 @@ function topPlayerHighlight() {
   $("#p3box").css("background-color", "");
   $(`#p${game.currentPlayer.playerNum}box`).css("background-color", "orange");
 }
+
+let topPlayerButton = document.querySelector('#top-button');
+topPlayerButton.addEventListener('click', showTopPlayers);
+  function showTopPlayers() {
+    let topPlayerBoard = document.querySelector('.top-player-board');
+  topPlayerBoard.classList.toggle('hidden');
+};
+
+var winners = getWinnersFromStorage() || [];
+
+function sendToStorage(key, value) {
+  localStorage.setItem(key, value);
+};
+
+function getFromStorage(key) {
+  return localStorage.getItem(key);
+};
+
+function getWinnersFromStorage() {
+  if ('winnersStorage' in localStorage) {
+    return JSON.parse(localStorage.getItem('winnersStorage'));
+  }
+};
+
+function updateTopPlayerBoard() {
+  var parsedWinners = JSON.parse(localStorage.getItem('winnersStorage'));
+    for (var i = 0; i < 5; i++) {
+      topPlayerNames[i].innerText = parsedWinners[i].name;
+      topPlayerTimes[i].innerText = Math.round(parsedWinners[i].time) + " seconds";
+    }
+};
+
+function updateWinners(i) {
+  winners.push({name: players[i].name, score: players[i].score});
+  sortWinners();
+  var stringifiedWinners = JSON.stringify(winners);
+  localStorage.setItem('winnersStorage', stringifiedWinners);
+  updateTopPlayerBoard();
+};
+

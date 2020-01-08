@@ -394,8 +394,13 @@ section.letterBank {
 .top-player-board {
   background-color: black;
   display: flex;
-  justify-content: space-around;
-  padding: 2vw;
+  justify-content: center;
+  padding: 1vw;
+  height: 25%;
+  width: 100%;
+  position:absolute;
+  right: 0px;
+  top: 7%;
 }
 
 .top-player {
@@ -407,18 +412,21 @@ section.letterBank {
   flex-direction: column;
   justify-content: center;
   padding: 1vw;
+  height: 98%;
 }
 
 .top-player-title {
   margin: 0;
+  font-size: 30px;
 }
 
 #top-button {
   // background-image: url(images/nav-button.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 6.9%;
+  position:absolute;
+  right: 190px;
+  top: 0%;
+  width: 17%;
+  height: 3%;
 }
 
 
