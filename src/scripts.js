@@ -60,13 +60,14 @@ function checkClickPuzzleComp() {
 
 //rename to display letter 
 function matchLetter(e) {
-  $(e.target).attr('disabled', 'true');
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
-  guessResult(letter, matches);
   let vowelCheck = checkVowel(letter);
-  if(vowelCheck === false){return console.log("no")};
-  if(vowelCheck === true){game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
+  if(vowelCheck === false) {return console.log("no")};
+  if(vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
+  
+  $(e.target).attr('disabled', 'true');
+  guessResult(letter, matches);
 
   if (matches) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
@@ -83,9 +84,9 @@ function matchLetter(e) {
   restrictGuess()
 }
 
-function checkVowel(letter){
-  if(letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U"){
-    if(game.currentPlayer.roundScore > 9){
+function checkVowel(letter) {
+  if (letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U") {
+    if (game.currentPlayer.roundScore > 9) {
       return true
     } else {return false}
   } else {null}
@@ -93,7 +94,7 @@ function checkVowel(letter){
 
 function restrictGuess() {
   $('.letterBank').children().addClass("hidden");
-  $('.letterBank').append('<p class=\'spin-text\'>Please spin the !</p>');
+  $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
 }
 
 function allowGuess() {

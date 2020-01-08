@@ -224,9 +224,8 @@ form {
   grid-template-columns: repeat(14, 60px);
   grid-gap: 3px;
   justify-content: center;
-  margin: 0 auto;
   padding: 4px;
-  width: 880px;
+  width: 80%;
 }
 
 .scoreboard {
@@ -245,19 +244,17 @@ aside {
 }
 
 .letter {
-  background-size: 54px 65px;
   border: 5px solid black;
   padding-top: 6px;
   height: 58px;
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .users {
   margin-bottom: 30px;
-}
-
-.hidden {
-  display: none;
 }
 
 .shadow {
@@ -289,48 +286,28 @@ section.letterBank {
   color: #FFFFFF;
 }
 
-.solve {
-
-}
-
 #spin {
   position: absolute;
   right: 50%
-}
-
-.solve-input {
-  float:right;
-  margin-top: 300px;
-  margin-left: 100px;
 }
 
 .hide-letter {
   color: #64c8ff;
 }
 
-.solve-enter {
-  float:right;
-  margin-top: 300px;
-  margin-left: 100px;
-}
-
-.past-guesses {
-float:right;
-margin-top: 300px;
-margin-left: 700px;
-}
-
 .solve-area {
-  margin-bottom: 50px;
-  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 60%;
+
+  * {
+    margin: 3%;
+  }
 }
 
 .make-guess {
-  position: absolute;
-  right: 600px;
-  top: 650px;
-  width: 200px;
-  height: 200px;
   color: white;
   font-size: 32px;
 }
@@ -384,4 +361,9 @@ margin-left: 700px;
   100%{
     bottom: -100%;
   }
+}
+
+
+.hidden {
+  display: none;
 }
