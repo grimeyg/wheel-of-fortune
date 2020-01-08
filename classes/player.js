@@ -1,3 +1,5 @@
+import Game from '../classes/game.js';
+
 class Player {
   constructor(name, num) {
     this.name = name;
@@ -12,10 +14,6 @@ class Player {
 
   calculateGuessScore(matches, spinVal) {
     this.roundScore += matches * spinVal;
-  }
-
-  guessVowel(){
-    this.roundScore = this.roundScore - 10;
   }
 }
 
