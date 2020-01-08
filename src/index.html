@@ -3,6 +3,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+  <button type='button' name='top-button' id='top-button'></button>
   <title>Wheel of Fortune</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -50,35 +51,61 @@
         <button class='start-game2'>Head on out!</button>
       </div>
   </section>
-  <div class='prize-page'></div>
-  <section class="game-page hidden">
-    <aside class="scoreboard">
-      <span class="round-num">Round 1</span>
-      <br>
-      <div id='p1box'>
-      <h3 class="player-1-name">User 1</h3>
-      <span class="player-1-total-score">Total Score:</span>
-      <span class="player-1-round-score">Round Score:</span>
-      </div>
-      <br>
-      <div id='p2box'>
-      <h3 class="player-2-name">User 2</h3>
-      <span class="player-2-total-score">Total Score:</span>
-      <span class="player-2-round-score">Round Score:</span>
-      </div>
-      <br>
-      <div id='p3box'>
-      <h3 class="player-3-name">User 3</h3>
-      <span class="player-3-total-score">Total Score:</span>
-      <span class="player-3-round-score">Round Score:</span>
-      </div>
-      <br>
-      <span>Round Score:</span>
-      <button class="solve">SOLVE</button>
-      <section class='past-guesses'>
-      <h3>Guessed Letters</h3>
+<section class="game-page hidden">
+  <section class='top-player-board hidden'>
+        <div class='top-player'>
+          <h2 class='top-player-title'>#1 PLAYER</h2>
+          <h3 class='top-player-name'></h3>
+          <p class='top-player-score'></p>
+        </div>
+        <div class='top-player'>
+          <h2 class='top-player-title'>#2 PLAYER</h2>
+          <h3 class='top-player-name'></h3>
+          <p class='top-player-score'></p>
+        </div>
+        <div class='top-player'>
+          <h2 class='top-player-title'>#3 PLAYER</h2>
+          <h3 class='top-player-name'></h3>
+          <p class='top-player-score'></p>
+        </div>
+        <div class='top-player'>
+          <h2 class='top-player-title'>#4 PLAYER</h2>
+          <h3 class='top-player-name'></h3>
+          <p class='top-player-score'></p>
+        </div>
+        <div class='top-player'>
+          <h2 class='top-player-title'>#5 PLAYER</h2>
+          <h3 class='top-player-name'></h3>
+          <p class='top-player-score'></p>
+        </div>
       </section>
-    </aside>
+  <aside class="scoreboard">
+    <span class="round-num">Round 1</span>
+    <br>
+    <div id='p1box'>
+    <h3 class="player-1-name">User 1</h3>
+    <span class="player-1-total-score">Total Score:</span>
+    <span class="player-1-round-score">Round Score:</span>
+    </div>
+    <br>
+    <div id='p2box'>
+    <h3 class="player-2-name">User 2</h3>
+    <span class="player-2-total-score">Total Score:</span>
+    <span class="player-2-round-score">Round Score:</span>
+    </div>
+    <br>
+    <div id='p3box'>
+    <h3 class="player-3-name">User 3</h3>
+    <span class="player-3-total-score">Total Score:</span>
+    <span class="player-3-round-score">Round Score:</span>
+    </div>
+    <br>
+    <span>Round Score:</span>
+    <button class="solve">SOLVE</button>
+    <section class='past-guesses'>
+    <h3>Guessed Letters</h3>
+    </section>
+  </aside>
   <div class="game-holder">
     <h1 class="game-title">WHEEL OF FORTUNE!</h1>
     <h2 class='category'></h2>

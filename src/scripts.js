@@ -3,10 +3,18 @@ import Player from '../classes/player.js';
 import Puzzle from '../classes/puzzle.js';
 import Round from '../classes/round.js';
 import Wheel from '../classes/wheel.js';
+import BonusRound from '../classes/bonusRound.js';
 import $ from 'jquery';
 
 let game;
 
+let colors = ["red","black","green","blue","#E6D10F","orange","rebeccapurple","tan","gray","orange","teal","#E6D10F", "red", "black", "blue","green","rebeccapurple","gold"]
+let cards = document.querySelectorAll(".money-card");
+
+cards.forEach(card => {
+  card.style.backgroundColor = colors[0];
+  colors.shift();
+})
 
 fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
   .then(response => response.json())
@@ -73,7 +81,7 @@ function matchLetter(e) {
   let vowelCheck = checkVowel(letter);
   if(vowelCheck === false) {return console.log("no")};
   if(vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
-  
+
   $(e.target).attr('disabled', 'true');
   guessResult(letter, matches);
 
@@ -200,10 +208,19 @@ function switchScreen() {
 }
 
 function showGuessInput() {
+  if(game.round === 3) {
+    let bonusRound = game.rounds[game.round];
+    let prize = bonusRound.getPrize();
+    showPrize(prize);
+    updateBonusRound()
+    // change css for table background because letters are currently showing
+  }
+
   $('.solve-area').removeClass('hidden');
   console.log(game.rounds[game.round].currentPuzzle.answer);
   $('.correct').text('');
   $('.incorrect').text('');
+
 }
 
 function clickSolveEnter() {
@@ -228,8 +245,6 @@ function clickSolveEnter() {
 // if correct end round and credit player thei
 // change turn to next player if incorrect guess
 
-
-
 $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
@@ -238,31 +253,25 @@ let spinButton = $("#spin");
 let spinResult;
 
 spinButton.click(() => {
-  $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "")
-  $("#wheel1").removeClass("wheel-1-animation");
-  $("#wheel2").removeClass("wheel-2-animation");
-  $("#wheel1").removeClass("wheel-1");
-  $("#wheel2").removeClass("wheel-2");
-  $("#wheel1").addClass("wheel-1");
-  $("#wheel2").addClass("wheel-2");
-  let colors = ["red","black","green","blue","#E6D10F","orange","rebeccapurple","tan","gray","orange","teal","#E6D10F", "red", "black", "blue","green","rebeccapurple","gold"]
-  let cards = document.querySelectorAll(".money-card");
+  let currentValueIndex = game.wheel.chooseValue();
+  let positionValue = game.wheel.getPosition(currentValueIndex);
+  spinResult = game.wheel.sections[currentValueIndex].value;
 
-  cards.forEach(card => {
-    card.style.backgroundColor = colors[0];
-    colors.shift();
-  })
-
-  let wheel = new Wheel();
-  let currentValueIndex = wheel.chooseValue();
-  let positionValue = wheel.getPosition(currentValueIndex);
-  spinResult = wheel.sections[currentValueIndex].value;
-
-  $(".wheel-1").addClass("wheel-1-animation");
-  $(".wheel-2").addClass("wheel-2-animation");
-  $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
-
-  alertDisplay('spin', spinResult);
+  if($(".wheel-1").hasClass("wheel-1-animation")){
+    $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "");
+    $(".wheel-2").removeClass("wheel-2-animation");
+    $(".wheel-1").removeClass("wheel-1-animation");
+    $(".wheel-1").addClass("wheel-3-animation");
+    $(".wheel-2").addClass("wheel-4-animation");
+    $(".wheel-3-animation, .wheel-4-animation").css("animation-iteration-count", `${positionValue}`)
+  } else {
+      $(".wheel-3-animation, .wheel-4-animation").css("animation-iteration-count", "")
+      $(".wheel-2").removeClass("wheel-4-animation");
+      $(".wheel-1").removeClass("wheel-3-animation");
+      $(".wheel-1").addClass("wheel-1-animation");
+      $(".wheel-2").addClass("wheel-2-animation");
+      $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
+  }
   spinResultCheck();
 });
 
@@ -279,6 +288,12 @@ function updateBonusRound() {
 }
 
 function showPrize(prize) {
-  $('.prize-container')
-    .append(`<img class="prize-img" src="./images/${prize}.jpeg" />`);
-}
+    $('.prize-container')
+      .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
+  }
+
+  topPlayerButton.addEventListener('click', showTopPlayers);
+  var topPlayerButton = document.querySelector('#top-button');
+  function showTopPlayers() {
+  topPlayerBoard.classList.toggle('hidden');
+};

@@ -1,6 +1,7 @@
 import Player from './player.js';
 import Puzzle from './puzzle.js';
 import Round from './round.js';
+import Wheel from '../classes/wheel.js';
 import $ from 'jquery';
 
 class Game {
@@ -10,6 +11,7 @@ class Game {
     this.rounds = [];
     this.puzzles = puzzles;
     this.currentPlayer = null;
+    this.wheel;
   }
 
   startGame(name1, name2, name3) {
@@ -21,6 +23,7 @@ class Game {
     }
     this.currentPlayer = this.players[0]
     this.rounds.push(new Round(this.selectPuzzle()))
+    this.wheel = new Wheel()
   }
 
   selectPuzzle() {

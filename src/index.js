@@ -11,5 +11,9 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import './images/border-design.png'
 import './images/noun_Wheel_9102.svg'
+import './images/rifle.jpg'
+import './images/wardrobe.jpg'
+import './images/oxen.jpg'
+import './images/food.jpg'
 
 import './scripts.js'
