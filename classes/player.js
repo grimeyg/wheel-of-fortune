@@ -1,5 +1,3 @@
-import Game from '../classes/game.js';
-
 class Player {
   constructor(name, num) {
     this.name = name;

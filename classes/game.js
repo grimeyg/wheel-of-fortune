@@ -1,6 +1,6 @@
 import Player from './player.js';
-import Puzzle from './puzzle.js';
 import Round from './round.js';
+import BonusRound from './bonusRound.js';
 import Wheel from '../classes/wheel.js';
 import $ from 'jquery';
 
@@ -50,14 +50,16 @@ class Game {
 
   endRound() {
     this.round++;
-    if(this.round < 3) {
+    if (this.round < 3) {
       this.rounds.push(new Round(this.selectPuzzle()))
       this.players.forEach(player => {
         player.roundScore = 0;
       })
     } else {
-      // enter bonus round, sort the player with highest totalScore, pop that player out
-      // have that player enter the round with a new puzzle, possibly new rules
+      this.rounds.push(new BonusRound(this.selectPuzzle()))
+      this.players.forEach(player => {
+        player.roundScore = 0;
+      })
     }
   }
 }
