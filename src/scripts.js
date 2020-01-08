@@ -30,6 +30,7 @@ const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
+
 function spinResultCheck() {
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
@@ -77,6 +78,7 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
+
   
   $("#spin").prop('disabled', false)
   checkClickPuzzleComp()
@@ -137,7 +139,7 @@ function showInstructions() {
     $('.player-2-name').text(player2);
     $('.player-3-name').text(player3);
     displayLetters();
-  } else {
+    } else {
     alert("Enter Pioneer Names!");
   }
 }
@@ -236,3 +238,7 @@ function updateBoard() {
   $('.vowels').prop('disabled', false);
   $('.round-num').text(`Round ${game.round + 1}`)
 }
+
+updateBonusround() {
+    $('.round-num').text('Bonus Round!')
+  }
