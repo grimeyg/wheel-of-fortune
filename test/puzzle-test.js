@@ -44,8 +44,6 @@ describe('Puzzle', function () {
     game = new Game(puzzleData);
     console.log(game.selectPuzzle().category)
     puzzle = new Puzzle(game.selectPuzzle());
-
-
   });
 
   it('should be a function', function () {

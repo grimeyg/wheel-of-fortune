@@ -3,8 +3,6 @@ const expect = chai.expect;
 import Wheel from '../classes/wheel.js';
 let wheel;
 
-
-
 describe('Wheel', function () {
 
   beforeEach(() => {

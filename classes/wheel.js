@@ -29,7 +29,6 @@ class Wheel {
         iterationPosition: 3.62},
       {value: 20,
         iterationPosition: 3.64},
-      //lose turn case on 34 swapped out 
       {value: "LOSE TURN",
         iterationPosition: 3.666}, //good
       {value: 15,

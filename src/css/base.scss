@@ -211,7 +211,6 @@ form {
   height: 100%;
   display: grid;
   grid-template-areas: "left center right";
-  // grid-template-columns:
   grid-template-columns: 1fr 8fr 1fr;
 }
 
@@ -309,7 +308,6 @@ background-size: cover;
   margin-right: 450px;
 }
 
-  //Letter Table
 .letterBank {
   background: #1F1F3D;
   display: grid;
@@ -421,15 +419,12 @@ section.letterBank {
 }
 
 #top-button {
-  // background-image: url(images/nav-button.png);
   position:absolute;
   right: 190px;
   top: 0%;
   width: 17%;
   height: 3%;
 }
-
-
 
 @keyframes wheel-1-animate {
   0% {
@@ -447,6 +442,7 @@ section.letterBank {
     bottom: 0;
   }
 }
+
 @keyframes wheel-2-animate {
   0% {
   }
@@ -464,6 +460,7 @@ section.letterBank {
 .hidden {
   display: none;
 }
+
 @keyframes wheel-3-animate {
   0% {
   }
@@ -480,6 +477,7 @@ section.letterBank {
     bottom: 0;
   }
 }
+
 @keyframes wheel-4-animate {
   0% {
   }
@@ -492,7 +490,6 @@ section.letterBank {
     bottom: -100%;
   }
 }
-
 
 .hidden {
   display: none;
