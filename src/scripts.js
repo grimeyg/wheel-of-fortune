@@ -79,8 +79,8 @@ function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
   let vowelCheck = checkVowel(letter);
-  if(vowelCheck === false) {return console.log("no")};
-  if(vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
+  if (vowelCheck === false) {return console.log("no")};
+  if (vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
 
   $(e.target).attr('disabled', 'true');
   guessResult(letter, matches);
@@ -94,7 +94,6 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
-
 
   $("#spin").prop('disabled', false)
   checkClickPuzzleComp()
@@ -226,7 +225,7 @@ function showGuessInput() {
 function clickSolveEnter() {
   $('.solve-area').addClass('hidden');
   const currPuzzle = game.rounds[game.round].currentPuzzle
-  if($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
+  if ($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
     game.currentPlayer.roundScore += 75;
     game.currentPlayer.calculateRoundScore();
     game.endRound();
@@ -257,7 +256,7 @@ spinButton.click(() => {
   let positionValue = game.wheel.getPosition(currentValueIndex);
   spinResult = game.wheel.sections[currentValueIndex].value;
 
-  if($(".wheel-1").hasClass("wheel-1-animation")){
+  if ($(".wheel-1").hasClass("wheel-1-animation")) {
     $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "");
     $(".wheel-2").removeClass("wheel-2-animation");
     $(".wheel-1").removeClass("wheel-1-animation");
@@ -265,12 +264,12 @@ spinButton.click(() => {
     $(".wheel-2").addClass("wheel-4-animation");
     $(".wheel-3-animation, .wheel-4-animation").css("animation-iteration-count", `${positionValue}`)
   } else {
-      $(".wheel-3-animation, .wheel-4-animation").css("animation-iteration-count", "")
-      $(".wheel-2").removeClass("wheel-4-animation");
-      $(".wheel-1").removeClass("wheel-3-animation");
-      $(".wheel-1").addClass("wheel-1-animation");
-      $(".wheel-2").addClass("wheel-2-animation");
-      $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
+    $(".wheel-3-animation, .wheel-4-animation").css("animation-iteration-count", "")
+    $(".wheel-2").removeClass("wheel-4-animation");
+    $(".wheel-1").removeClass("wheel-3-animation");
+    $(".wheel-1").addClass("wheel-1-animation");
+    $(".wheel-2").addClass("wheel-2-animation");
+    $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
   }
   spinResultCheck();
 });
@@ -288,12 +287,12 @@ function updateBonusRound() {
 }
 
 function showPrize(prize) {
-    $('.prize-container')
-      .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
-  }
+  $('.prize-container')
+    .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
+}
 
-  topPlayerButton.addEventListener('click', showTopPlayers);
-  var topPlayerButton = document.querySelector('#top-button');
-  function showTopPlayers() {
-  topPlayerBoard.classList.toggle('hidden');
-};
+// topPlayerButton.addEventListener('click', showTopPlayers);
+//   var topPlayerButton = document.querySelector('#top-button');
+//   function showTopPlayers() {
+//   topPlayerBoard.classList.toggle('hidden');
+// };
