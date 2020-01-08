@@ -23,53 +23,84 @@ function loadPuzzles(data) {
   game.startGame()
 
   restrictGuess()
-
   $("#p1box").css("background-color", "orange");
-
 }
 
 const startGameButton = $(".start-game");
 const startGameButton2 = $(".start-game2");
 const body = $("body");
 
+
+function spinResultCheck() {
+  if (spinResult === 'BANKRUPT') {
+    game.currentPlayer.roundScore = 0;
+    $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
+    game.playerActive();
+    restrictGuess()
+  } else if (spinResult === 'LOSE TURN') {
+    game.playerActive();
+    restrictGuess()
+  } else {
+    allowGuess();
+  }
+}
+
+function guessResult(letter, matches) {
+  game.currentPlayer.calculateGuessScore(matches, spinResult);
+  game.rounds[game.round].handleGuess(letter);
+  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
+  $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
+}
+
+function checkClickPuzzleComp() {
+  if (game.rounds[game.round].checkAnswerMatch()) {
+    game.endRound();
+    updateBoard();
+  }
+}
+
+//rename to display letter
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
-  game.rounds[game.round].handleGuess(letter);
-  if (spinResult === 'BANKRUPT') {
-    game.currentPlayer.roundScore = 0;
-  } else {
-    game.currentPlayer.calculateGuessScore(matches, spinResult);
-  }
-  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(game.currentPlayer.roundScore);
-  $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
+  let vowelCheck = checkVowel(letter);
+  if(vowelCheck === false) {return console.log("no")};
+  if(vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
+  
   $(e.target).attr('disabled', 'true');
-  if (game.rounds[game.round].currentPuzzle.answer.split('').includes(letter)) {
+  guessResult(letter, matches);
+
+  if (matches) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
-      $(`div:contains(${letter})`).removeClass('hide-letter');
-    }
+        $(`div:contains(${letter})`).removeClass('hide-letter');
+      }
     });
   } else {
     game.playerActive()
   }
 
-  if (game.rounds[game.round].checkAnswerMatch()) {
-    game.endRound();
-  }
+
+  $("#spin").prop('disabled', false)
+  checkClickPuzzleComp()
   restrictGuess()
 }
 
-// line 32 target the curr puzzle of the round do the includes on that
+function checkVowel(letter) {
+  if (letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U") {
+    if (game.currentPlayer.roundScore > 9) {
+      return true
+    } else {return false}
+  } else {null}
+}
 
 function restrictGuess() {
   $('.letterBank').children().addClass("hidden");
   $('.letterBank').append('<p class=\'spin-text\'>Please spin the wheel!</p>');
-  //disable end of each turn
-  //clear out after
 }
 
 function allowGuess() {
+  $("#spin").prop('disabled', true);
   $('.spin-text').remove();
   $('.letterBank').children().removeClass("hidden");
 }
@@ -78,7 +109,7 @@ startGameButton.on("click", showInstructions);
 
 $('.letterBank').on('click', (e) => {
   if ($(e.target).hasClass('vowel') || $(e.target).hasClass('consonants')) {
-   matchLetter(e);
+    matchLetter(e);
   }
 });
 
@@ -155,14 +186,14 @@ function clickSolveEnter() {
   } else {
     game.playerActive()
     $('.guess-validation-msg').append('<span class="incorrect">Sorry that is incorrect!</span>');
-    }
-    $('.solve-input').val('');
   }
+  $('.solve-input').val('');
+}
 
-  // $('.solve-area').addClass('hidden');
-  // show with alert whether or not typed answer is correct
-  // if correct end round and credit player thei
-  // change turn to next player if incorrect guess
+// $('.solve-area').addClass('hidden');
+// show with alert whether or not typed answer is correct
+// if correct end round and credit player thei
+// change turn to next player if incorrect guess
 
 
 
@@ -198,7 +229,7 @@ spinButton.click(() => {
   $(".wheel-2").addClass("wheel-2-animation");
   $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", `${positionValue}`)
 
-  allowGuess();
+  spinResultCheck();
 });
 
 function updateBoard() {
@@ -209,7 +240,7 @@ function updateBoard() {
   $('.round-num').text(`Round ${game.round + 1}`)
 }
 
-function updateBonusround() {
+function updateBonusRound() {
     $('.round-num').text('Bonus Round!')
   }
 
