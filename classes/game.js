@@ -33,15 +33,15 @@ class Game {
     if (this.currentPlayer === this.players[0]) {
       this.currentPlayer = this.players[1];
       $("#p1box").css("background-color", "");
-      $("#p2box").css("background-color", "yellow");
+      $("#p2box").css("background-color", "orange");
     } else if (this.currentPlayer === this.players[1]) {
       this.currentPlayer = this.players[2];
       $("#p2box").css("background-color", "");
-      $("#p3box").css("background-color", "yellow");
+      $("#p3box").css("background-color", "orange");
     } else if (this.currentPlayer === this.players[2]) {
       this.currentPlayer = this.players[0];
       $("#p3box").css("background-color", "");
-      $("#p1box").css("background-color", "yellow");
+      $("#p1box").css("background-color", "orange");
     }
   }
 

@@ -50,48 +50,39 @@
         <button class='start-game2'>Head on out!</button>
       </div>
   </section>
-  <!-- <section class='guess-board'>
-  <section class="activity-section">
-    <section class='guess-board'>
-      <p>Clue</p>
-    </section>
-      <div>
-        <p class="player-1">Player 1<span>0</span></p>
-        <p class="player-2">Player 2<span>0</span></p>
-        <p class="player-3">Player 3<span>0</span></p>
+  <div class='prize-page'></div>
+  <section class="game-page hidden">
+    <aside class="scoreboard">
+      <span class="round-num">Round 1</span>
+      <br>
+      <div id='p1box'>
+      <h3 class="player-1-name">User 1</h3>
+      <span class="player-1-total-score">Total Score:</span>
+      <span class="player-1-round-score">Round Score:</span>
       </div>
-      <button class="change-button">change-screen</button>
-    </section> -->
-<section class="game-page hidden">
-  <aside class="scoreboard">
-    <span class="round-num">Round 1</span>
-    <br>
-    <div id='p1box'>
-    <h3 class="player-1-name">User 1</h3>
-    <span class="player-1-total-score">Total Score:</span>
-    <span class="player-1-round-score">Round Score:</span>
-    </div>
-    <br>
-    <div id='p2box'>
-    <h3 class="player-2-name">User 2</h3>
-    <span class="player-2-total-score">Total Score:</span>
-    <span class="player-2-round-score">Round Score:</span>
-    </div>
-    <br>
-    <div id='p3box'>
-    <h3 class="player-3-name">User 3</h3>
-    <span class="player-3-total-score">Total Score:</span>
-    <span class="player-3-round-score">Round Score:</span>
-    </div>
-    <br>
-    <span>Round Score:</span>
-    <button class="solve">SOLVE</button>
-    <section class='past-guesses'>
-    <h3>Guessed Letters</h3>
-    </section>
-  </aside>
+      <br>
+      <div id='p2box'>
+      <h3 class="player-2-name">User 2</h3>
+      <span class="player-2-total-score">Total Score:</span>
+      <span class="player-2-round-score">Round Score:</span>
+      </div>
+      <br>
+      <div id='p3box'>
+      <h3 class="player-3-name">User 3</h3>
+      <span class="player-3-total-score">Total Score:</span>
+      <span class="player-3-round-score">Round Score:</span>
+      </div>
+      <br>
+      <span>Round Score:</span>
+      <button class="solve">SOLVE</button>
+      <section class='past-guesses'>
+      <h3>Guessed Letters</h3>
+      </section>
+    </aside>
   <div class="game-holder">
     <h1 class="game-title">WHEEL OF FORTUNE!</h1>
+    <h2 class='category'></h2>
+    <h3 class='description'></h3>
     <section class='gameboard'>
       <div class='letter'></div>
       <div class='letter' id='0'></div>
@@ -150,17 +141,14 @@
       <div class='letter' id='47'></div>
       <div class='letter'></div>
     </section>
-    <h2 class='category'></h2>
-    <h3 class='description'></h3>
+    <h3 class='alerts'></h3>
     <span class='arrow'>----></span>
-    <div class='prize-container'></div>
     <section class="solve-area hidden">
-    <label class='make-guess'>Make a Guess!</label>
-    <input class="solve-input"></input>
-    <button class="solve-enter">Enter</button>
-</section>
-<section class = 'guess-validation-msg'>
-</section>
+      <label class='make-guess'>Make a Guess!</label>
+      <input class="solve-input"></input>
+      <button class="solve-enter">Enter</button>
+    </section>
+    <section class = 'guess-validation-msg'></section>
     <section class='letterBank'>
       <table id='const-section'>
         <th colspan='5'>Consonants</th>
@@ -206,9 +194,8 @@
         </table>
       </table>
     </section>
-
   </div>
-   <section class="wheel-container">
+    <section class="wheel-container">
      <section id="wheel1" class="wheel-1">
        <div class="money-card">$40</div>
        <div class="money-card">BANKRUPT</div>
@@ -233,7 +220,7 @@
      </section>
      <button id="spin" type="button" name="button">Spin</button>
     </section>
-   </section>
+  </section>
  </section>
 </section>
   </body>

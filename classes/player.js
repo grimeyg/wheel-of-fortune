@@ -13,7 +13,9 @@ class Player {
   }
 
   calculateGuessScore(matches, spinVal) {
-    this.roundScore += matches * spinVal;
+    const score = matches * spinVal
+    this.roundScore += score;
+    return score;
   }
 }
 
