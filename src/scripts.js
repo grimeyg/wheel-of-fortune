@@ -42,7 +42,8 @@ const body = $("body");
 function spinResultCheck() {
   if (spinResult === 'BANKRUPT') {
     game.currentPlayer.roundScore = 0;
-    $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
+    $(`.player-${game.currentPlayer.playerNum}-round-score`)
+      .text(`Round Score: ${game.currentPlayer.roundScore}`);
     game.playerActive();
     restrictGuess();
     alertDisplay('bankrupt');
@@ -58,9 +59,10 @@ function spinResultCheck() {
 function guessResult(letter, matches) {
   const score = game.currentPlayer.calculateGuessScore(matches, spinResult);
   game.rounds[game.round].handleGuess(letter);
-  $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
+  $(`.player-${game.currentPlayer.playerNum}-round-score`)
+    .text(`Round Score: ${game.currentPlayer.roundScore}`);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
-  if(matches) {
+  if (matches) {
     alertDisplay('match', 0, matches, score);
   } else {
     alertDisplay('noMatch');
@@ -69,6 +71,9 @@ function guessResult(letter, matches) {
 
 function checkClickPuzzleComp() {
   if (game.rounds[game.round].checkAnswerMatch()) {
+    game.currentPlayer.calculateRoundScore();
+    $(`.player-${game.currentPlayer.playerNum}-total-score`)
+      .text(`Total Score: ${game.currentPlayer.totalScore}`);
     game.endRound();
     updateBoard();
   }
@@ -239,6 +244,8 @@ function clickSolveEnter() {
   if ($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
     game.currentPlayer.roundScore += 75;
     game.currentPlayer.calculateRoundScore();
+    $(`.player-${game.currentPlayer.playerNum}-total-score`)
+      .text(`Total Score: ${game.currentPlayer.totalScore}`);
     game.endRound();
     $('.gameboard').children().text('');
     alertDisplay('puzzleGuessWin')
