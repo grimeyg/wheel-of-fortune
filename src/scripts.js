@@ -208,3 +208,7 @@ function updateBoard() {
   $('.vowels').prop('disabled', false);
   $('.round-num').text(`Round ${game.round + 1}`)
 }
+
+updateBonusround() {
+    $('.round-num').text('Bonus Round!')
+  }
