@@ -1,9 +1,5 @@
 import Game from '../classes/game.js';
-import Player from '../classes/player.js';
 import Puzzle from '../classes/puzzle.js';
-import Round from '../classes/round.js';
-import Wheel from '../classes/wheel.js';
-import BonusRound from '../classes/bonusRound.js';
 import $ from 'jquery';
 
 let game;
@@ -19,7 +15,6 @@ cards.forEach(card => {
 fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
   .then(response => response.json())
   .then(data => loadPuzzles(data))
-//should add an error handling alert
   .catch(err => console.log(err))
 
 function loadPuzzles(data) {
@@ -79,7 +74,6 @@ function checkClickPuzzleComp() {
   }
 }
 
-//rename to display letter
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
@@ -95,6 +89,15 @@ function matchLetter(e) {
   $(e.target).attr('disabled', 'true');
   guessResult(letter, matches);
 
+  flipMatchedLetters(letter, matches);
+
+  $(".solve").prop('disabled', false)
+  $("#spin").prop('disabled', false)
+  checkClickPuzzleComp()
+  restrictGuess()
+}
+
+function flipMatchedLetters(letter, matches) {
   if (matches) {
     game.rounds[game.round].currentPuzzle.answer.split('').forEach((foundLetter) => {
       if (foundLetter === letter) {
@@ -104,10 +107,6 @@ function matchLetter(e) {
   } else {
     game.playerActive()
   }
-
-  $("#spin").prop('disabled', false)
-  checkClickPuzzleComp()
-  restrictGuess()
 }
 
 function checkVowel(letter) {
@@ -125,6 +124,7 @@ function restrictGuess() {
 
 function allowGuess() {
   $("#spin").prop('disabled', true);
+  $(".solve").prop('disabled', true);
   $('.spin-text').remove();
   $('.letterBank').children().removeClass("hidden");
 }
@@ -138,9 +138,6 @@ $('.letterBank').on('click', (e) => {
 });
 
 function showInstructions() {
-  //remove event listener
-  // startGameButton.off("click", showInstructions)
-  //add new EL
   startGameButton2.on("click", switchScreen);
   const mainPage = $("#main-page");
   const player1 = $("#player-1").val();
@@ -149,8 +146,6 @@ function showInstructions() {
   const instructHeader = $(".instruction-header");
   const instructPage = $("#instruction-page");
 
-  // mainPage.addClass("hidden");
-  // instructPage.removeClass("hidden");
   if (player1 && player2 && player3) {
     mainPage.addClass("hidden");
     instructPage.removeClass("hidden");
@@ -169,19 +164,27 @@ function showInstructions() {
   }
 }
 
-function displayLetters() {
+function displayLetters(bonusStatus) {
   const currPuzzle = game.rounds[game.round].currentPuzzle;
   const letterDis = currPuzzle.returnLetters();
   let counter = 1;
   $('.category').text(currPuzzle.category);
   $('.description').text(currPuzzle.description);
-  letterDis.forEach(word => {
-    word.forEach(letter => {
-      $(`#${counter}`).text(letter).addClass('hide-letter');
+  if (bonusStatus) {
+    letterDis.forEach(word => {
+      word.forEach(letter => {
+        $(`#${Math.floor(Math.random() * 30)}`).text(letter).addClass('hide-letter');
+      })
+    })
+  } else {
+    letterDis.forEach(word => {
+      word.forEach(letter => {
+        $(`#${counter}`).text(letter).addClass('hide-letter');
+        counter++;
+      })
       counter++;
     })
-    counter++;
-  })
+  }
 }
 
 function alertDisplay(alertType, spin, matchCount, score) {
@@ -208,7 +211,7 @@ function alertDisplay(alertType, spin, matchCount, score) {
     $('.alerts').text(`Enjoy that shiny new vowel.`);
     break;  
   case 'puzzleGuessWin':
-    $('.alerts').text('Good guess traveler! Here\'s 75 gold!');
+    $('.alerts').text('Good guess traveler! Here\'s 75 gold! Spin first on the next puzzle.');
     break;
   case 'puzzleGuessLoss':
     $('.alerts').text('Not quite right, keep on panning.');
@@ -223,49 +226,60 @@ function switchScreen() {
 }
 
 function showGuessInput() {
-  if (game.round === 3) {
-    let bonusRound = game.rounds[game.round];
-    let prize = bonusRound.getPrize();
-    showPrize(prize);
-    updateBonusRound()
-    // change css for table background because letters are currently showing
-  }
-
+  $("#spin").prop('disabled', true);
   $('.solve-area').removeClass('hidden');
   console.log(game.rounds[game.round].currentPuzzle.answer);
   $('.correct').text('');
   $('.incorrect').text('');
-
 }
 
 function clickSolveEnter() {
   $('.solve-area').addClass('hidden');
   const currPuzzle = game.rounds[game.round].currentPuzzle;
   if ($(".solve-input").val().toUpperCase() === currPuzzle.answer) {
-    game.currentPlayer.roundScore += 75;
-    game.currentPlayer.calculateRoundScore();
-    $(`.player-${game.currentPlayer.playerNum}-total-score`)
-      .text(`Total Score: ${game.currentPlayer.totalScore}`);
-    game.endRound();
-    $('.gameboard').children().text('');
-    alertDisplay('puzzleGuessWin')
-    updateBoard();
+    if (game.round === 3) {
+      game.currentPlayer.roundScore += 100;
+      game.currentPlayer.calculateRoundScore();
+      $('.game-page').addClass('hidden');
+      $('.results-page').html(`
+      <h3>Correct! Congratulations, ${game.currentPlayer.name}!</h3>
+      <p>You finished the trail with ${game.currentPlayer.totalScore} gold.</p>
+      `);
+      $('.results-page').removeClass('hidden');
+    } else {
+      game.currentPlayer.roundScore += 75;
+      game.currentPlayer.calculateRoundScore();
+      $(`.player-${game.currentPlayer.playerNum}-total-score`)
+        .text(`Total Score: ${game.currentPlayer.totalScore}`);
+      game.endRound();
+      $('.gameboard').children().text('');
+      alertDisplay('puzzleGuessWin')
+      $(".solve").prop('disabled', false)
+      $("#spin").prop('disabled', false)
+      updateBoard();
+    }
   } else {
-    game.playerActive()
-    alertDisplay('puzzleGuessLoss')
+    if (game.round === 3) {
+      $('.game-page').addClass('hidden');
+      $('.results-page').html(`
+      <h3>Incorrect, but good try ${game.currentPlayer.name}!</h3>
+      <p>You still finished the trail with ${game.currentPlayer.totalScore} gold.</p>
+      <p>Congratulations!</p>
+      `);
+      $('.results-page').removeClass('hidden');
+    } else {
+      game.playerActive()
+      alertDisplay('puzzleGuessLoss')
+      $(".solve").prop('disabled', false)
+      $("#spin").prop('disabled', false)
+    }
+    $('.solve-input').val('');
   }
-  $('.solve-input').val('');
 }
-
-// $('.solve-area').addClass('hidden');
-// show with alert whether or not typed answer is correct
-// if correct end round and credit player thei
-// change turn to next player if incorrect guess
 
 $(".solve").on("click", showGuessInput)
 $(".solve-enter").on("click", clickSolveEnter)
 
-let sheet = $("#css");
 let spinButton = $("#spin");
 let spinResult;
 
@@ -273,6 +287,8 @@ spinButton.click(() => {
   let currentValueIndex = game.wheel.chooseValue();
   let positionValue = game.wheel.getPosition(currentValueIndex);
   spinResult = game.wheel.sections[currentValueIndex].value;
+
+  alertDisplay('spin', spinResult);
 
   if ($(".wheel-1").hasClass("wheel-1-animation")) {
     $(".wheel-1-animation, .wheel-2-animation").css("animation-iteration-count", "");
@@ -294,23 +310,28 @@ spinButton.click(() => {
 
 function updateBoard() {
   $('.gameboard').children().text('');
-  displayLetters()
+  
+  if (game.round === 3) {
+    displayLetters('bonus')
+    topPlayerHighlight()
+    $('.round-num').text('Bonus Round!')
+    $('.gameboard').css('background-color', 'orange');
+    $('.alerts').text(`You won ${game.currentPlayer.name}! Now see if you can strike it big! You get one guess at this one!`);
+    $('.letterBank').children().addClass("hidden");
+    $('.solve-area').removeClass('hidden');
+    $("#spin").prop('disabled', true);
+    $(".solve").prop('disabled', true);
+  } else {
+    displayLetters()
+    $('.round-num').text(`Round ${game.round + 1}`)
+  }
   $('.consonants').prop('disabled', false);
   $('.vowels').prop('disabled', false);
-  $('.round-num').text(`Round ${game.round + 1}`)
 }
 
-function updateBonusRound() {
-  $('.round-num').text('Bonus Round!')
+function topPlayerHighlight() {
+  $("#p1box").css("background-color", "");
+  $("#p2box").css("background-color", "");
+  $("#p3box").css("background-color", "");
+  $(`#p${game.currentPlayer.playerNum}box`).css("background-color", "orange");
 }
-
-function showPrize(prize) {
-  $('.prize-container')
-    .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
-}
-
-// topPlayerButton.addEventListener('click', showTopPlayers);
-//   var topPlayerButton = document.querySelector('#top-button');
-//   function showTopPlayers() {
-//   topPlayerBoard.classList.toggle('hidden');
-// };

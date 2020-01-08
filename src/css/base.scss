@@ -243,6 +243,17 @@ form {
   width: 80%;
 }
 
+.results-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 2em;
+}
+
 .scoreboard {
   grid-area: left;
   display: flex;
