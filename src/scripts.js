@@ -77,21 +77,22 @@ function checkClickPuzzleComp() {
 function matchLetter(e) {
   let letter = $(e.target).text().toUpperCase();
   let matches = game.rounds[game.round].countLetterMatches(letter);
+
   let vowelCheck = checkVowel(letter);
   if (vowelCheck === false) {
     return alertDisplay('noVowel');
   }
   if (vowelCheck === true) {
     game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10;
-    guessTrigger(letter, matches)
+    guessTrigger(e, letter, matches)
     return alertDisplay('vowel');
   }
 
-  guessTrigger(letter, matches)
+  guessTrigger(e, letter, matches)
   guessResult(letter, matches);
 }
 
-function guessTrigger(letter, matches) {
+function guessTrigger(e, letter, matches) {
   $(e.target).attr('disabled', 'true');
   flipMatchedLetters(letter, matches);
 
