@@ -44,20 +44,27 @@ function spinResultCheck() {
     game.currentPlayer.roundScore = 0;
     $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
     game.playerActive();
-    restrictGuess()
+    restrictGuess();
+    alertDisplay('bankrupt');
   } else if (spinResult === 'LOSE TURN') {
     game.playerActive();
     restrictGuess()
+    alertDisplay('loseTurn');
   } else {
     allowGuess();
   }
 }
 
 function guessResult(letter, matches) {
-  game.currentPlayer.calculateGuessScore(matches, spinResult);
+  const score = game.currentPlayer.calculateGuessScore(matches, spinResult);
   game.rounds[game.round].handleGuess(letter);
   $(`.player-${game.currentPlayer.playerNum}-round-score`).text(`Round Score: ${game.currentPlayer.roundScore}`);
   $('.past-guesses').append(`<li class="past-guess">${letter}</li>`);
+  if(matches) {
+    alertDisplay('match', 0, matches, score);
+  } else {
+    alertDisplay('noMatch');
+  }
 }
 
 function checkClickPuzzleComp() {
@@ -148,7 +155,7 @@ function showInstructions() {
     $('.player-2-name').text(player2);
     $('.player-3-name').text(player3);
     displayLetters();
-    } else {
+  } else {
     alert("Enter Pioneer Names!");
   }
 }
@@ -166,6 +173,32 @@ function displayLetters() {
     })
     counter++;
   })
+}
+
+function alertDisplay(alertType, spin, matchCount, score) {
+  switch (alertType) {
+  case 'bankrupt':
+    $('.alerts').text('Your wagon broke down, you had to pay for repairs, you’re bankrupt!');
+    break;
+  case 'loseTurn':
+    $('.alerts').text('Your child caught dysentery! Lose a turn.');
+    break;
+  case 'spin':
+    $('.alerts').text(`You spun a ${spin}`);
+    break;
+  case 'match':
+    $('.alerts').text(`You matched ${matchCount} times, earned ${score} gold for your journey!`);
+    break;
+  case 'noMatch':
+    $('.alerts').text(`No matches, better luck further down the trail!`);
+    break;
+  case 'puzzleGuessWin':
+    $('.alerts').text('');
+    break;
+  case 'puzzleGuessLoss':
+    $('.alerts').text('');
+    break;
+  }
 }
 
 function switchScreen() {
@@ -251,10 +284,10 @@ function updateBoard() {
 }
 
 function updateBonusRound() {
-    $('.round-num').text('Bonus Round!')
-  }
+  $('.round-num').text('Bonus Round!')
+}
 
-  function showPrize(prize) {
+function showPrize(prize) {
     $('.prize-container')
       .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
   }

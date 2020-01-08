@@ -108,6 +108,8 @@
   </aside>
   <div class="game-holder">
     <h1 class="game-title">WHEEL OF FORTUNE!</h1>
+    <h2 class='category'></h2>
+    <h3 class='description'></h3>
     <section class='gameboard'>
       <div class='letter'></div>
       <div class='letter' id='0'></div>
@@ -166,17 +168,14 @@
       <div class='letter' id='47'></div>
       <div class='letter'></div>
     </section>
-    <h2 class='category'></h2>
-    <h3 class='description'></h3>
+    <h3 class='alerts'></h3>
     <span class='arrow'>----></span>
-    <div class='prize-container'></div>
     <section class="solve-area hidden">
-    <label class='make-guess'>Make a Guess!</label>
-    <input class="solve-input"></input>
-    <button class="solve-enter">Enter</button>
-</section>
-<section class = 'guess-validation-msg'>
-</section>
+      <label class='make-guess'>Make a Guess!</label>
+      <input class="solve-input"></input>
+      <button class="solve-enter">Enter</button>
+    </section>
+    <section class = 'guess-validation-msg'></section>
     <section class='letterBank'>
       <table id='const-section'>
         <th colspan='5'>Consonants</th>
@@ -222,9 +221,8 @@
         </table>
       </table>
     </section>
-
   </div>
-   <section class="wheel-container">
+    <section class="wheel-container">
      <section id="wheel1" class="wheel-1">
        <div class="money-card">$40</div>
        <div class="money-card">BANKRUPT</div>
@@ -249,7 +247,7 @@
      </section>
      <button id="spin" type="button" name="button">Spin</button>
     </section>
-   </section>
+  </section>
  </section>
 </section>
   </body>
