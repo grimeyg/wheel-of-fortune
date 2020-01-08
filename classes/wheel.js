@@ -1,4 +1,3 @@
-
 class Wheel {
   constructor() {
     this.sections = [
