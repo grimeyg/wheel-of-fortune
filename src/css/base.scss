@@ -35,6 +35,7 @@ h2 {
   font-family: "Press Start 2P";
   font-size: 5rem;
   justify-content: center;
+  margin-top: 5%;
 }
 
 .main-page-sec {
@@ -54,6 +55,8 @@ h2 {
   font-family: "Girassol";
   font-size: 6rem;
   justify-content: center;
+  margin-top: 11%;
+  margin-bottom: 5%;
 }
 
 .border-design{
@@ -174,6 +177,7 @@ form {
   font-family: "Press Start 2P";
   font-size: 2rem;
   color: #DAA520;
+  margin-top: 2%;
 }
 
 .aunt {
@@ -181,11 +185,13 @@ form {
   font-size: 2rem;
   color: #DAA520;
   margin-left: 3%;
+  margin-bottom: 2%;
 }
 
 .directions {
   font-family: "Press Start 2P";
-  font-size: 2rem;
+  font-size: 1.5rem;
+  line-height: 2.3rem;
   color: #DAA520;
   margin-left: 3%;
   margin-right: 2%;
@@ -350,7 +356,7 @@ margin-left: 700px;
 .arrow {
   position:absolute;
   right: 45px;
-  top: 420px;
+  top: 400px;
   width: 200px;
   height: 200px;
   color: white;

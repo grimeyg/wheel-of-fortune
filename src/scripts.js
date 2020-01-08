@@ -43,7 +43,7 @@ function spinResultCheck() {
   } else {
     allowGuess();
   }
-} 
+}
 
 function guessResult(letter, matches) {
   game.currentPlayer.calculateGuessScore(matches, spinResult);
@@ -59,7 +59,7 @@ function checkClickPuzzleComp() {
   }
 }
 
-//rename to display letter 
+//rename to display letter
 function matchLetter(e) {
   $(e.target).attr('disabled', 'true');
   let letter = $(e.target).text().toUpperCase();
@@ -79,7 +79,7 @@ function matchLetter(e) {
     game.playerActive()
   }
 
-  
+
   $("#spin").prop('disabled', false)
   checkClickPuzzleComp()
   restrictGuess()
@@ -239,6 +239,6 @@ function updateBoard() {
   $('.round-num').text(`Round ${game.round + 1}`)
 }
 
-updateBonusround() {
+function updateBonusRound() {
     $('.round-num').text('Bonus Round!')
   }
