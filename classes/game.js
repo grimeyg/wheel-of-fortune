@@ -47,7 +47,7 @@ class Game {
 
   endRound() {
     this.round++;
-    if(this.round > 2) {
+    if(this.round < 2) {
       this.rounds.push(new Round(this.selectPuzzle()))
       this.players.forEach(player => {
         player.roundScore = 0;
