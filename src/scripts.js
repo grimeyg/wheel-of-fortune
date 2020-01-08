@@ -3,6 +3,7 @@ import Player from '../classes/player.js';
 import Puzzle from '../classes/puzzle.js';
 import Round from '../classes/round.js';
 import Wheel from '../classes/wheel.js';
+import BonusRound from '../classes/bonusRound.js';
 import $ from 'jquery';
 
 let game;
@@ -66,7 +67,7 @@ function matchLetter(e) {
   let vowelCheck = checkVowel(letter);
   if(vowelCheck === false) {return console.log("no")};
   if(vowelCheck === true) {game.currentPlayer.roundScore = game.currentPlayer.roundScore - 10};
-  
+
   $(e.target).attr('disabled', 'true');
   guessResult(letter, matches);
 
@@ -167,10 +168,19 @@ function switchScreen() {
 }
 
 function showGuessInput() {
+  if(game.round === 3) {
+    let bonusRound = game.rounds[game.round];
+    let prize = bonusRound.getPrize();
+    showPrize(prize);
+    updateBonusRound()
+    // change css for table background because letters are currently showing
+  }
+
   $('.solve-area').removeClass('hidden');
   console.log(game.rounds[game.round].currentPuzzle.answer);
   $('.correct').text('');
   $('.incorrect').text('');
+
 }
 
 function clickSolveEnter() {
@@ -246,5 +256,5 @@ function updateBonusRound() {
 
   function showPrize(prize) {
     $('.prize-container')
-      .append(`<img class="prize-img" src="./images/${prize}.jpeg" />`);
+      .append(`<img class="prize-img" src="./images/${prize}.jpg" />`);
   }
